@@ -1,6 +1,6 @@
 ﻿namespace SharpLog
 {
-    partial class Form1
+    partial class LogMainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,10 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            SuspendLayout();
+            // 
+            // LogMainForm
+            // 
+            AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Text = "Form1";
+            AutoScroll = true;
+            BackColor = Color.FromArgb(18, 20, 24);
+            ClientSize = new Size(1344, 712);
+            Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Regular, GraphicsUnit.Point, 134);
+            ForeColor = Color.FromArgb(240, 242, 245);
+            Margin = new Padding(4);
+            MinimumSize = new Size(1366, 768);
+            Name = "LogMainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SharpLog";
+            WindowState = FormWindowState.Minimized;
+            ResumeLayout(false);
         }
 
         #endregion

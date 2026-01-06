@@ -1,10 +1,12 @@
 namespace SharpLog
 {
-    public partial class Form1 : Form
+    public partial class LogMainForm : Form
     {
-        public Form1()
+        public LogMainForm()
         {
             InitializeComponent();
+
+
         }
     }
 }
