@@ -5,9 +5,12 @@ namespace SharpLog
         public LogMainForm()
         {
             InitializeComponent();
+
+            LogMainFormStyles logMainFormStyles = new LogMainFormStyles();
+            logMainFormStyles.SetAllControlsStyle(this);
+
             BackColor = logMainFormBackColor;
             ForeColor = logMainFormFontColor;
-
 
         }
     }
