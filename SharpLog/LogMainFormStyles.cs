@@ -18,7 +18,7 @@ namespace SharpLog
                 // 处理 Label
                 if (ctrl is Label label)
                 {
-                    label.ForeColor = labelSecondaryNoteColor;
+                    label.ForeColor = labelTextColor;
                 }
 
                 // 处理 TextBox
@@ -61,7 +61,7 @@ namespace SharpLog
                 }
 
                 //设定分类框的样式
-                if(ctrl is Panel panel)
+                if (ctrl is Panel panel)
                 {
                     panel.BackColor = panelBackColor;
                     panel.Paint += (sender, e) =>
@@ -74,15 +74,25 @@ namespace SharpLog
                     };
                 }
 
-               //设定工具栏的外观
-                if(ctrl is ToolStrip toolStrip)
+                //设定工具栏的外观
+                if (ctrl is ToolStrip toolStrip)
                 {
                     toolStrip.Renderer = new NoBorderToolStripRenderer();
                     toolStrip.BackColor = panelBackColor;
                     toolStrip.ForeColor = labelTextColor;
                 }
 
+                //设置GroupBox的样式
+                if (ctrl is GroupBox groupBox)
+                {
+                    groupBox.ForeColor = labelTextColor;
+                }
 
+                //设置下拉列表的样式
+                if (ctrl is ComboBox comboBox)
+                {
+                    comboBox.BackColor = normalTextBoxTextColor;
+                }
 
 
                 // 递归处理嵌套控件（Panel/GroupBox里的控件）
