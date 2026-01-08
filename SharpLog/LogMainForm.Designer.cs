@@ -35,8 +35,8 @@
             HelpBtn = new ToolStripDropDownButton();
             CallSignLab = new ToolStripLabel();
             LogShowList = new FlowLayoutPanel();
-            label5 = new Label();
             panel1 = new Panel();
+            groupBox4 = new GroupBox();
             groupBox3 = new GroupBox();
             flowLayoutPanel3 = new FlowLayoutPanel();
             RRST_R = new NumericUpDown();
@@ -50,6 +50,7 @@
             RST_T = new NumericUpDown();
             label4 = new Label();
             FrequencyInput = new ComboBox();
+            label5 = new Label();
             groupBox1 = new GroupBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             FmMode = new RadioButton();
@@ -75,6 +76,7 @@
             label1 = new Label();
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RRST_R).BeginInit();
@@ -143,48 +145,50 @@
             LogShowList.Size = new Size(1388, 953);
             LogShowList.TabIndex = 1;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(68, 428);
-            label5.Name = "label5";
-            label5.Size = new Size(96, 28);
-            label5.TabIndex = 14;
-            label5.Text = "频       率";
-            // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel1.AutoScroll = true;
-            panel1.Controls.Add(groupBox3);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(groupBox2);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(FrequencyInput);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(groupBox1);
-            panel1.Controls.Add(CallSignInput);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(EndTime);
-            panel1.Controls.Add(EndData);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(StartTime);
-            panel1.Controls.Add(StartData);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(groupBox4);
             panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
             panel1.Location = new Point(1413, 60);
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
+            panel1.Padding = new Padding(20);
             panel1.Size = new Size(477, 953);
             panel1.TabIndex = 2;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(groupBox3);
+            groupBox4.Controls.Add(label6);
+            groupBox4.Controls.Add(groupBox2);
+            groupBox4.Controls.Add(label4);
+            groupBox4.Controls.Add(FrequencyInput);
+            groupBox4.Controls.Add(label5);
+            groupBox4.Controls.Add(groupBox1);
+            groupBox4.Controls.Add(CallSignInput);
+            groupBox4.Controls.Add(label3);
+            groupBox4.Controls.Add(EndTime);
+            groupBox4.Controls.Add(EndData);
+            groupBox4.Controls.Add(label2);
+            groupBox4.Controls.Add(StartTime);
+            groupBox4.Controls.Add(StartData);
+            groupBox4.Controls.Add(label1);
+            groupBox4.Location = new Point(23, 23);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(436, 557);
+            groupBox4.TabIndex = 25;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "基本通联信息";
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(flowLayoutPanel3);
-            groupBox3.Location = new Point(250, 467);
+            groupBox3.Location = new Point(222, 467);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(192, 73);
-            groupBox3.TabIndex = 24;
+            groupBox3.TabIndex = 39;
             groupBox3.TabStop = false;
             groupBox3.Text = "RRST";
             // 
@@ -241,18 +245,18 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(273, 482);
+            label6.Location = new Point(245, 482);
             label6.Name = "label6";
             label6.Size = new Size(0, 28);
-            label6.TabIndex = 23;
+            label6.TabIndex = 38;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(flowLayoutPanel2);
-            groupBox2.Location = new Point(55, 467);
+            groupBox2.Location = new Point(27, 467);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(192, 73);
-            groupBox2.TabIndex = 22;
+            groupBox2.TabIndex = 37;
             groupBox2.TabStop = false;
             groupBox2.Text = "RST";
             // 
@@ -309,27 +313,36 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(84, 482);
+            label4.Location = new Point(56, 482);
             label4.Name = "label4";
             label4.Size = new Size(0, 28);
-            label4.TabIndex = 21;
+            label4.TabIndex = 36;
             // 
             // FrequencyInput
             // 
             FrequencyInput.BackColor = SystemColors.Control;
             FrequencyInput.FormattingEnabled = true;
-            FrequencyInput.Location = new Point(170, 425);
+            FrequencyInput.Location = new Point(142, 425);
             FrequencyInput.Name = "FrequencyInput";
             FrequencyInput.Size = new Size(257, 36);
-            FrequencyInput.TabIndex = 20;
+            FrequencyInput.TabIndex = 35;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(40, 428);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 28);
+            label5.TabIndex = 33;
+            label5.Text = "频       率";
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(flowLayoutPanel1);
-            groupBox1.Location = new Point(68, 176);
+            groupBox1.Location = new Point(40, 176);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(359, 240);
-            groupBox1.TabIndex = 19;
+            groupBox1.TabIndex = 34;
             groupBox1.TabStop = false;
             groupBox1.Text = "模    式";
             // 
@@ -503,79 +516,79 @@
             // 
             CallSignInput.BorderStyle = BorderStyle.FixedSingle;
             CallSignInput.CharacterCasing = CharacterCasing.Upper;
-            CallSignInput.Location = new Point(170, 131);
+            CallSignInput.Location = new Point(142, 131);
             CallSignInput.Multiline = true;
             CallSignInput.Name = "CallSignInput";
             CallSignInput.Size = new Size(257, 35);
-            CallSignInput.TabIndex = 12;
+            CallSignInput.TabIndex = 32;
             CallSignInput.TextAlign = HorizontalAlignment.Center;
             CallSignInput.WordWrap = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(68, 135);
+            label3.Location = new Point(40, 135);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
-            label3.TabIndex = 11;
+            label3.TabIndex = 31;
             label3.Text = "对方呼号";
             // 
             // EndTime
             // 
             EndTime.CustomFormat = "HH:mm";
             EndTime.Format = DateTimePickerFormat.Custom;
-            EndTime.Location = new Point(332, 88);
+            EndTime.Location = new Point(304, 88);
             EndTime.Name = "EndTime";
             EndTime.ShowUpDown = true;
             EndTime.Size = new Size(95, 34);
-            EndTime.TabIndex = 10;
+            EndTime.TabIndex = 30;
             // 
             // EndData
             // 
             EndData.CustomFormat = "yyyy-MM-dd";
             EndData.Format = DateTimePickerFormat.Custom;
-            EndData.Location = new Point(170, 88);
+            EndData.Location = new Point(142, 88);
             EndData.Name = "EndData";
             EndData.ShowUpDown = true;
             EndData.Size = new Size(156, 34);
-            EndData.TabIndex = 9;
+            EndData.TabIndex = 29;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(68, 90);
+            label2.Location = new Point(40, 90);
             label2.Name = "label2";
             label2.Size = new Size(96, 28);
-            label2.TabIndex = 6;
+            label2.TabIndex = 26;
             label2.Text = "结束时间";
             // 
             // StartTime
             // 
             StartTime.CustomFormat = "HH:mm";
             StartTime.Format = DateTimePickerFormat.Custom;
-            StartTime.Location = new Point(332, 39);
+            StartTime.Location = new Point(304, 39);
             StartTime.Name = "StartTime";
             StartTime.ShowUpDown = true;
             StartTime.Size = new Size(95, 34);
-            StartTime.TabIndex = 8;
+            StartTime.TabIndex = 28;
             // 
             // StartData
             // 
             StartData.CustomFormat = "yyyy-MM-dd";
             StartData.Format = DateTimePickerFormat.Custom;
-            StartData.Location = new Point(170, 39);
+            StartData.Location = new Point(142, 39);
             StartData.Name = "StartData";
             StartData.ShowUpDown = true;
             StartData.Size = new Size(156, 34);
-            StartData.TabIndex = 7;
+            StartData.TabIndex = 27;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(68, 42);
+            label1.Location = new Point(40, 42);
             label1.Name = "label1";
             label1.Size = new Size(96, 28);
-            label1.TabIndex = 0;
+            label1.TabIndex = 25;
             label1.Text = "开始时间";
             // 
             // LogMainForm
@@ -597,7 +610,8 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)RRST_R).EndInit();
@@ -624,42 +638,43 @@
         private ToolStripLabel CallSignLab;
         private FlowLayoutPanel LogShowList;
         private Panel panel1;
-        private Label label2;
-        private Label label1;
-        private DateTimePicker StartTime;
-        private DateTimePicker StartData;
-        private DateTimePicker EndTime;
-        private DateTimePicker EndData;
-        private Label label3;
-        private TextBox CallSignInput;
-        private Label label5;
-        private RadioButton FmMode;
-        private RadioButton SSBMode;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private RadioButton AMMode;
-        private RadioButton FT8Mode;
-        private RadioButton SSTVMode;
-        private RadioButton FT4Mode;
-        private RadioButton CWMode;
-        private RadioButton C4FMMode;
-        private RadioButton D_STARMode;
-        private RadioButton DMRMode;
-        private GroupBox groupBox1;
-        private RadioButton NXDNMode;
-        private RadioButton radioButton11;
-        private RadioButton radioButton12;
-        private ComboBox FrequencyInput;
-        private Label label4;
-        private NumericUpDown RST_R;
-        private GroupBox groupBox2;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private NumericUpDown RST_S;
-        private NumericUpDown RST_T;
+        private GroupBox groupBox4;
         private GroupBox groupBox3;
         private FlowLayoutPanel flowLayoutPanel3;
         private NumericUpDown RRST_R;
         private NumericUpDown RRST_S;
         private NumericUpDown RRST_T;
         private Label label6;
+        private GroupBox groupBox2;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private NumericUpDown RST_R;
+        private NumericUpDown RST_S;
+        private NumericUpDown RST_T;
+        private Label label4;
+        private ComboBox FrequencyInput;
+        private Label label5;
+        private GroupBox groupBox1;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private RadioButton FmMode;
+        private RadioButton AMMode;
+        private RadioButton SSBMode;
+        private RadioButton FT8Mode;
+        private RadioButton FT4Mode;
+        private RadioButton SSTVMode;
+        private RadioButton CWMode;
+        private RadioButton DMRMode;
+        private RadioButton C4FMMode;
+        private RadioButton D_STARMode;
+        private RadioButton NXDNMode;
+        private RadioButton radioButton11;
+        private RadioButton radioButton12;
+        private TextBox CallSignInput;
+        private Label label3;
+        private DateTimePicker EndTime;
+        private DateTimePicker EndData;
+        private Label label2;
+        private DateTimePicker StartTime;
+        private DateTimePicker StartData;
+        private Label label1;
     }
 }
