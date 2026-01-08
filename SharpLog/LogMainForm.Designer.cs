@@ -36,6 +36,9 @@
             CallSignLab = new ToolStripLabel();
             LogShowList = new FlowLayoutPanel();
             panel1 = new Panel();
+            groupBox5 = new GroupBox();
+            groupBox6 = new GroupBox();
+            QTHInPut = new TextBox();
             groupBox4 = new GroupBox();
             groupBox3 = new GroupBox();
             flowLayoutPanel3 = new FlowLayoutPanel();
@@ -76,6 +79,8 @@
             label1 = new Label();
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -98,7 +103,7 @@
             toolStrip1.Location = new Point(8, 8);
             toolStrip1.Margin = new Padding(0, 0, 0, 8);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1882, 39);
+            toolStrip1.Size = new Size(2522, 39);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -142,24 +147,62 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(1388, 953);
+            LogShowList.Size = new Size(2028, 1313);
             LogShowList.TabIndex = 1;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel1.AutoScroll = true;
+            panel1.AutoScrollMargin = new Size(0, 20);
+            panel1.Controls.Add(groupBox5);
             panel1.Controls.Add(groupBox4);
             panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            panel1.Location = new Point(1413, 60);
+            panel1.Location = new Point(2053, 60);
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(20);
-            panel1.Size = new Size(477, 953);
+            panel1.Size = new Size(477, 1313);
             panel1.TabIndex = 2;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(groupBox6);
+            groupBox5.Dock = DockStyle.Top;
+            groupBox5.Location = new Point(20, 577);
+            groupBox5.Margin = new Padding(3, 20, 3, 3);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new Padding(10, 3, 10, 3);
+            groupBox5.Size = new Size(437, 713);
+            groupBox5.TabIndex = 26;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "其他通联信息";
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(QTHInPut);
+            groupBox6.Dock = DockStyle.Top;
+            groupBox6.Location = new Point(10, 30);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Padding = new Padding(5);
+            groupBox6.Size = new Size(417, 153);
+            groupBox6.TabIndex = 0;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "QTH";
+            // 
+            // QTHInPut
+            // 
+            QTHInPut.BorderStyle = BorderStyle.FixedSingle;
+            QTHInPut.Dock = DockStyle.Fill;
+            QTHInPut.Location = new Point(5, 32);
+            QTHInPut.Multiline = true;
+            QTHInPut.Name = "QTHInPut";
+            QTHInPut.Size = new Size(407, 116);
+            QTHInPut.TabIndex = 0;
             // 
             // groupBox4
             // 
+            groupBox4.BackgroundImageLayout = ImageLayout.Center;
             groupBox4.Controls.Add(groupBox3);
             groupBox4.Controls.Add(label6);
             groupBox4.Controls.Add(groupBox2);
@@ -175,9 +218,12 @@
             groupBox4.Controls.Add(StartTime);
             groupBox4.Controls.Add(StartData);
             groupBox4.Controls.Add(label1);
-            groupBox4.Location = new Point(23, 23);
+            groupBox4.Dock = DockStyle.Top;
+            groupBox4.Location = new Point(20, 20);
+            groupBox4.Margin = new Padding(3, 3, 3, 20);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(436, 557);
+            groupBox4.Padding = new Padding(10, 3, 10, 3);
+            groupBox4.Size = new Size(437, 557);
             groupBox4.TabIndex = 25;
             groupBox4.TabStop = false;
             groupBox4.Text = "基本通联信息";
@@ -245,7 +291,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(245, 482);
+            label6.Location = new Point(252, 482);
             label6.Name = "label6";
             label6.Size = new Size(0, 28);
             label6.TabIndex = 38;
@@ -313,7 +359,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(56, 482);
+            label4.Location = new Point(63, 482);
             label4.Name = "label4";
             label4.Size = new Size(0, 28);
             label4.TabIndex = 36;
@@ -330,7 +376,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(40, 428);
+            label5.Location = new Point(47, 428);
             label5.Name = "label5";
             label5.Size = new Size(96, 28);
             label5.TabIndex = 33;
@@ -339,9 +385,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(flowLayoutPanel1);
-            groupBox1.Location = new Point(40, 176);
+            groupBox1.Location = new Point(10, 176);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(359, 240);
+            groupBox1.Size = new Size(417, 240);
             groupBox1.TabIndex = 34;
             groupBox1.TabStop = false;
             groupBox1.Text = "模    式";
@@ -351,10 +397,10 @@
             flowLayoutPanel1.Controls.Add(FmMode);
             flowLayoutPanel1.Controls.Add(AMMode);
             flowLayoutPanel1.Controls.Add(SSBMode);
+            flowLayoutPanel1.Controls.Add(CWMode);
             flowLayoutPanel1.Controls.Add(FT8Mode);
             flowLayoutPanel1.Controls.Add(FT4Mode);
             flowLayoutPanel1.Controls.Add(SSTVMode);
-            flowLayoutPanel1.Controls.Add(CWMode);
             flowLayoutPanel1.Controls.Add(DMRMode);
             flowLayoutPanel1.Controls.Add(C4FMMode);
             flowLayoutPanel1.Controls.Add(D_STARMode);
@@ -365,7 +411,7 @@
             flowLayoutPanel1.Location = new Point(3, 30);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(10);
-            flowLayoutPanel1.Size = new Size(353, 207);
+            flowLayoutPanel1.Size = new Size(411, 207);
             flowLayoutPanel1.TabIndex = 18;
             // 
             // FmMode
@@ -404,7 +450,7 @@
             // FT8Mode
             // 
             FT8Mode.AutoSize = true;
-            FT8Mode.Location = new Point(254, 13);
+            FT8Mode.Location = new Point(13, 51);
             FT8Mode.Name = "FT8Mode";
             FT8Mode.Size = new Size(75, 32);
             FT8Mode.TabIndex = 19;
@@ -415,7 +461,7 @@
             // FT4Mode
             // 
             FT4Mode.AutoSize = true;
-            FT4Mode.Location = new Point(13, 51);
+            FT4Mode.Location = new Point(94, 51);
             FT4Mode.Name = "FT4Mode";
             FT4Mode.Size = new Size(75, 32);
             FT4Mode.TabIndex = 21;
@@ -426,7 +472,8 @@
             // SSTVMode
             // 
             SSTVMode.AutoSize = true;
-            SSTVMode.Location = new Point(94, 51);
+            flowLayoutPanel1.SetFlowBreak(SSTVMode, true);
+            SSTVMode.Location = new Point(175, 51);
             SSTVMode.Name = "SSTVMode";
             SSTVMode.Size = new Size(91, 32);
             SSTVMode.TabIndex = 20;
@@ -437,7 +484,7 @@
             // CWMode
             // 
             CWMode.AutoSize = true;
-            CWMode.Location = new Point(191, 51);
+            CWMode.Location = new Point(254, 13);
             CWMode.Name = "CWMode";
             CWMode.Size = new Size(74, 32);
             CWMode.TabIndex = 22;
@@ -527,7 +574,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 135);
+            label3.Location = new Point(47, 135);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
             label3.TabIndex = 31;
@@ -556,7 +603,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 90);
+            label2.Location = new Point(47, 90);
             label2.Name = "label2";
             label2.Size = new Size(96, 28);
             label2.TabIndex = 26;
@@ -585,7 +632,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 42);
+            label1.Location = new Point(47, 42);
             label1.Name = "label1";
             label1.Size = new Size(96, 28);
             label1.TabIndex = 25;
@@ -596,7 +643,7 @@
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1898, 1024);
+            ClientSize = new Size(2538, 1384);
             Controls.Add(panel1);
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
@@ -610,6 +657,9 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             panel1.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -676,5 +726,8 @@
         private DateTimePicker StartTime;
         private DateTimePicker StartData;
         private Label label1;
+        private GroupBox groupBox5;
+        private GroupBox groupBox6;
+        private TextBox QTHInPut;
     }
 }
