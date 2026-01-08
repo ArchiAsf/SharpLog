@@ -28,15 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
             SuspendLayout();
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(457, 340);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 34);
-            textBox1.TabIndex = 0;
             // 
             // LogMainForm
             // 
@@ -44,7 +36,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(1344, 712);
-            Controls.Add(textBox1);
             Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Regular, GraphicsUnit.Point, 134);
             Margin = new Padding(4);
             MinimumSize = new Size(1366, 768);
@@ -53,11 +44,8 @@
             Text = "SharpLog";
             WindowState = FormWindowState.Minimized;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBox1;
     }
 }

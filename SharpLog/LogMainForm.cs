@@ -5,6 +5,8 @@ namespace SharpLog
         public LogMainForm()
         {
             InitializeComponent();
+            BackColor = logMainFormBackColor;
+            ForeColor = logMainFormFontColor;
 
 
         }

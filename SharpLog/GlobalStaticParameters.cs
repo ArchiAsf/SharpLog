@@ -8,25 +8,6 @@ namespace SharpLog
 {
     public static class GlobalStaticParameters
     {
-        /*        #region 设定一些要用到的颜色
-
-                public static Color logMainFormBackColor = Color.FromArgb(18, 20, 24);
-                public static Color logMainFormFontColor = Color.FromArgb(240, 242, 245);
-
-                public static Color boxBackColor = Color.FromArgb(32, 35, 40);
-                public static Color boxBorderColor = Color.FromArgb(60, 63, 70);
-
-                public static Color mainLabelColor = Color.FromArgb(255, 255, 255);
-                public static Color textLabelColor = Color.FromArgb(240, 242, 245);
-                public static Color secondaryLabelColor = Color.FromArgb(200, 203, 210);
-
-                public static Color normalTextBoxBackColor = Color.FromArgb(45, 48, 55);
-                public static Color normalTextBoxTextColor = Color.FromArgb(240, 242, 245);
-                public static Color normalTextBoxBorderColor = Color.FromArgb(60, 63, 70);
-
-                #endregion
-        */
-
         #region 设定一些要用到的颜色
         // Form（主窗体）
         public static Color logMainFormBackColor = Color.FromArgb(18, 20, 24); // 主窗体背景色
@@ -82,7 +63,7 @@ namespace SharpLog
         public static Color dgvRowSelectedTextColor = Color.FromArgb(255, 255, 255); // 数据表格选中行字体颜色
         #endregion
 
-
+        
 
     }
 }
