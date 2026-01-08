@@ -152,4 +152,5 @@ namespace SharpLog
             // base.OnRenderToolStripBorder(e);
         }
     }
+
 }
