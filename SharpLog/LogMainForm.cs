@@ -1,3 +1,5 @@
+using System.Windows.Forms.VisualStyles;
+
 namespace SharpLog
 {
     public partial class LogMainForm : Form
@@ -19,7 +21,10 @@ namespace SharpLog
 
             FrequencyInput.BackColor = normalTextBoxBackColor;
             FrequencyInput.ForeColor = normalTextBoxTextColor;
+
+
             
+
         }
 
 

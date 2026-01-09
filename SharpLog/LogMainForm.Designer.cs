@@ -38,6 +38,12 @@
             panel1 = new Panel();
             groupBox13 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
+            IsRelayStation = new CheckBox();
+            IsSatellite = new CheckBox();
+            IsQRP = new CheckBox();
+            checkBox1 = new CheckBox();
+            IsEME = new CheckBox();
+            IsMeteoricTrail = new CheckBox();
             groupBox5 = new GroupBox();
             groupBox12 = new GroupBox();
             RMKSInPut = new TextBox();
@@ -97,6 +103,7 @@
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox13.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox12.SuspendLayout();
             groupBox10.SuspendLayout();
@@ -171,7 +178,7 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(834, 1339);
+            LogShowList.Size = new Size(830, 641);
             LogShowList.TabIndex = 1;
             // 
             // panel1
@@ -183,11 +190,11 @@
             panel1.Controls.Add(groupBox5);
             panel1.Controls.Add(groupBox4);
             panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            panel1.Location = new Point(859, 60);
+            panel1.Location = new Point(855, 60);
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(20);
-            panel1.Size = new Size(477, 1339);
+            panel1.Size = new Size(481, 641);
             panel1.TabIndex = 2;
             // 
             // groupBox13
@@ -196,7 +203,7 @@
             groupBox13.Dock = DockStyle.Top;
             groupBox13.Location = new Point(20, 1169);
             groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(411, 188);
+            groupBox13.Size = new Size(415, 188);
             groupBox13.TabIndex = 27;
             groupBox13.TabStop = false;
             groupBox13.Text = "通联标记";
@@ -207,15 +214,87 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Controls.Add(IsRelayStation, 1, 1);
+            tableLayoutPanel1.Controls.Add(IsSatellite, 0, 1);
+            tableLayoutPanel1.Controls.Add(IsQRP, 2, 0);
+            tableLayoutPanel1.Controls.Add(checkBox1, 0, 0);
+            tableLayoutPanel1.Controls.Add(IsEME, 1, 0);
+            tableLayoutPanel1.Controls.Add(IsMeteoricTrail, 2, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 30);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.Padding = new Padding(20);
+            tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(405, 155);
+            tableLayoutPanel1.Size = new Size(409, 155);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // IsRelayStation
+            // 
+            IsRelayStation.Anchor = AnchorStyles.None;
+            IsRelayStation.AutoSize = true;
+            IsRelayStation.Location = new Point(164, 90);
+            IsRelayStation.Name = "IsRelayStation";
+            IsRelayStation.Size = new Size(80, 32);
+            IsRelayStation.TabIndex = 4;
+            IsRelayStation.Text = "中继";
+            IsRelayStation.UseVisualStyleBackColor = true;
+            // 
+            // IsSatellite
+            // 
+            IsSatellite.Anchor = AnchorStyles.None;
+            IsSatellite.AutoSize = true;
+            IsSatellite.Location = new Point(41, 90);
+            IsSatellite.Name = "IsSatellite";
+            IsSatellite.Size = new Size(80, 32);
+            IsSatellite.TabIndex = 3;
+            IsSatellite.Text = "卫星";
+            IsSatellite.UseVisualStyleBackColor = true;
+            // 
+            // IsQRP
+            // 
+            IsQRP.Anchor = AnchorStyles.None;
+            IsQRP.AutoSize = true;
+            IsQRP.Location = new Point(285, 32);
+            IsQRP.Name = "IsQRP";
+            IsQRP.Size = new Size(84, 32);
+            IsQRP.TabIndex = 2;
+            IsQRP.Text = "QRP";
+            IsQRP.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.Anchor = AnchorStyles.None;
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(42, 32);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(79, 32);
+            checkBox1.TabIndex = 0;
+            checkBox1.Text = "QSL";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // IsEME
+            // 
+            IsEME.Anchor = AnchorStyles.None;
+            IsEME.AutoSize = true;
+            IsEME.Location = new Point(162, 32);
+            IsEME.Name = "IsEME";
+            IsEME.Size = new Size(84, 32);
+            IsEME.TabIndex = 6;
+            IsEME.Text = "EME";
+            IsEME.UseVisualStyleBackColor = true;
+            // 
+            // IsMeteoricTrail
+            // 
+            IsMeteoricTrail.Anchor = AnchorStyles.None;
+            IsMeteoricTrail.AutoSize = true;
+            IsMeteoricTrail.Location = new Point(287, 90);
+            IsMeteoricTrail.Name = "IsMeteoricTrail";
+            IsMeteoricTrail.Size = new Size(80, 32);
+            IsMeteoricTrail.TabIndex = 7;
+            IsMeteoricTrail.Text = "流星";
+            IsMeteoricTrail.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -231,7 +310,7 @@
             groupBox5.Margin = new Padding(3, 20, 3, 3);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(10, 3, 10, 3);
-            groupBox5.Size = new Size(411, 592);
+            groupBox5.Size = new Size(415, 592);
             groupBox5.TabIndex = 26;
             groupBox5.TabStop = false;
             groupBox5.Text = "其他通联信息";
@@ -384,7 +463,7 @@
             groupBox6.Location = new Point(10, 30);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(5);
-            groupBox6.Size = new Size(391, 153);
+            groupBox6.Size = new Size(395, 153);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "QTH";
@@ -396,7 +475,7 @@
             QTHInPut.Location = new Point(5, 32);
             QTHInPut.Multiline = true;
             QTHInPut.Name = "QTHInPut";
-            QTHInPut.Size = new Size(381, 116);
+            QTHInPut.Size = new Size(385, 116);
             QTHInPut.TabIndex = 0;
             // 
             // groupBox4
@@ -423,7 +502,7 @@
             groupBox4.Margin = new Padding(3, 3, 3, 20);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(10, 3, 10, 3);
-            groupBox4.Size = new Size(411, 557);
+            groupBox4.Size = new Size(415, 557);
             groupBox4.TabIndex = 25;
             groupBox4.TabStop = false;
             groupBox4.Text = "基本通联信息";
@@ -594,7 +673,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(flowLayoutPanel1);
-            groupBox1.Location = new Point(10, 176);
+            groupBox1.Location = new Point(10, 179);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(391, 240);
             groupBox1.TabIndex = 34;
@@ -852,7 +931,7 @@
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1344, 1410);
+            ClientSize = new Size(1344, 712);
             Controls.Add(panel1);
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
@@ -867,6 +946,8 @@
             toolStrip1.PerformLayout();
             panel1.ResumeLayout(false);
             groupBox13.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox12.ResumeLayout(false);
             groupBox12.PerformLayout();
@@ -968,5 +1049,11 @@
         private TextBox OPInPut;
         private GroupBox groupBox13;
         private TableLayoutPanel tableLayoutPanel1;
+        private CheckBox IsEME;
+        private CheckBox IsRelayStation;
+        private CheckBox IsSatellite;
+        private CheckBox checkBox1;
+        private CheckBox IsQRP;
+        private CheckBox IsMeteoricTrail;
     }
 }
