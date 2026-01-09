@@ -42,6 +42,7 @@ namespace SharpLog
                 if (ctrl is Button btn)
                 {
                     // 设置按钮基础样式
+
                     btn.BackColor = buttonNormalBackColor;
                     btn.ForeColor = buttonNormalTextColor;
                     btn.FlatStyle = FlatStyle.Flat; // 扁平化样式（可选，效果更统一）
