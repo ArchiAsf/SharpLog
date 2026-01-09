@@ -61,6 +61,9 @@
             RIGInPut = new TextBox();
             groupBox6 = new GroupBox();
             QTHInPut = new TextBox();
+            label11 = new Label();
+            SaveLogBtn = new Button();
+            label9 = new Label();
             groupBox4 = new GroupBox();
             label8 = new Label();
             groupBox3 = new GroupBox();
@@ -178,7 +181,7 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(830, 641);
+            LogShowList.Size = new Size(830, 1339);
             LogShowList.TabIndex = 1;
             // 
             // panel1
@@ -188,20 +191,23 @@
             panel1.AutoScrollMargin = new Size(0, 20);
             panel1.Controls.Add(groupBox13);
             panel1.Controls.Add(groupBox5);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(SaveLogBtn);
+            panel1.Controls.Add(label9);
             panel1.Controls.Add(groupBox4);
             panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
             panel1.Location = new Point(855, 60);
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(20);
-            panel1.Size = new Size(481, 641);
+            panel1.Size = new Size(481, 1339);
             panel1.TabIndex = 2;
             // 
             // groupBox13
             // 
             groupBox13.Controls.Add(tableLayoutPanel1);
             groupBox13.Dock = DockStyle.Top;
-            groupBox13.Location = new Point(20, 1169);
+            groupBox13.Location = new Point(20, 1249);
             groupBox13.Name = "groupBox13";
             groupBox13.Size = new Size(415, 188);
             groupBox13.TabIndex = 27;
@@ -306,7 +312,7 @@
             groupBox5.Controls.Add(groupBox7);
             groupBox5.Controls.Add(groupBox6);
             groupBox5.Dock = DockStyle.Top;
-            groupBox5.Location = new Point(20, 577);
+            groupBox5.Location = new Point(20, 657);
             groupBox5.Margin = new Padding(3, 20, 3, 3);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(10, 3, 10, 3);
@@ -477,6 +483,39 @@
             QTHInPut.Name = "QTHInPut";
             QTHInPut.Size = new Size(385, 116);
             QTHInPut.TabIndex = 0;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Dock = DockStyle.Top;
+            label11.Font = new Font("Microsoft YaHei UI", 5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            label11.Location = new Point(20, 642);
+            label11.Name = "label11";
+            label11.Size = new Size(0, 15);
+            label11.TabIndex = 30;
+            // 
+            // SaveLogBtn
+            // 
+            SaveLogBtn.AutoSize = true;
+            SaveLogBtn.Dock = DockStyle.Top;
+            SaveLogBtn.Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            SaveLogBtn.Location = new Point(20, 592);
+            SaveLogBtn.Margin = new Padding(20);
+            SaveLogBtn.Name = "SaveLogBtn";
+            SaveLogBtn.Size = new Size(415, 50);
+            SaveLogBtn.TabIndex = 28;
+            SaveLogBtn.Text = "添 加 纪 录";
+            SaveLogBtn.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Dock = DockStyle.Top;
+            label9.Font = new Font("Microsoft YaHei UI", 5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            label9.Location = new Point(20, 577);
+            label9.Name = "label9";
+            label9.Size = new Size(0, 15);
+            label9.TabIndex = 29;
             // 
             // groupBox4
             // 
@@ -931,7 +970,7 @@
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1344, 712);
+            ClientSize = new Size(1344, 1410);
             Controls.Add(panel1);
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
@@ -945,6 +984,7 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             groupBox13.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -1055,5 +1095,8 @@
         private CheckBox checkBox1;
         private CheckBox IsQRP;
         private CheckBox IsMeteoricTrail;
+        private Button SaveLogBtn;
+        private Label label9;
+        private Label label11;
     }
 }
