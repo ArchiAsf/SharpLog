@@ -41,7 +41,7 @@
             IsRelayStation = new CheckBox();
             IsSatellite = new CheckBox();
             IsQRP = new CheckBox();
-            checkBox1 = new CheckBox();
+            IsQSL = new CheckBox();
             IsEME = new CheckBox();
             IsMeteoricTrail = new CheckBox();
             groupBox5 = new GroupBox();
@@ -93,8 +93,8 @@
             C4FMMode = new RadioButton();
             D_STARMode = new RadioButton();
             NXDNMode = new RadioButton();
-            radioButton11 = new RadioButton();
-            radioButton12 = new RadioButton();
+            PacketMode = new RadioButton();
+            MSK144Mode = new RadioButton();
             CallSignInput = new TextBox();
             label3 = new Label();
             EndTime = new DateTimePicker();
@@ -224,7 +224,7 @@
             tableLayoutPanel1.Controls.Add(IsRelayStation, 1, 1);
             tableLayoutPanel1.Controls.Add(IsSatellite, 0, 1);
             tableLayoutPanel1.Controls.Add(IsQRP, 2, 0);
-            tableLayoutPanel1.Controls.Add(checkBox1, 0, 0);
+            tableLayoutPanel1.Controls.Add(IsQSL, 0, 0);
             tableLayoutPanel1.Controls.Add(IsEME, 1, 0);
             tableLayoutPanel1.Controls.Add(IsMeteoricTrail, 2, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
@@ -270,16 +270,16 @@
             IsQRP.Text = "QRP";
             IsQRP.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // IsQSL
             // 
-            checkBox1.Anchor = AnchorStyles.None;
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(42, 32);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(79, 32);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "QSL";
-            checkBox1.UseVisualStyleBackColor = true;
+            IsQSL.Anchor = AnchorStyles.None;
+            IsQSL.AutoSize = true;
+            IsQSL.Location = new Point(42, 32);
+            IsQSL.Name = "IsQSL";
+            IsQSL.Size = new Size(79, 32);
+            IsQSL.TabIndex = 0;
+            IsQSL.Text = "QSL";
+            IsQSL.UseVisualStyleBackColor = true;
             // 
             // IsEME
             // 
@@ -507,6 +507,7 @@
             SaveLogBtn.TabIndex = 28;
             SaveLogBtn.Text = "添 加 纪 录";
             SaveLogBtn.UseVisualStyleBackColor = true;
+            SaveLogBtn.Click += SaveLogBtn_Click;
             // 
             // label9
             // 
@@ -607,6 +608,7 @@
             // 
             RRST_T.BorderStyle = BorderStyle.FixedSingle;
             RRST_T.Cursor = Cursors.Hand;
+            RRST_T.Enabled = false;
             RRST_T.Location = new Point(127, 3);
             RRST_T.Maximum = new decimal(new int[] { 9, 0, 0, 0 });
             RRST_T.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -675,6 +677,7 @@
             // 
             RST_T.BorderStyle = BorderStyle.FixedSingle;
             RST_T.Cursor = Cursors.Hand;
+            RST_T.Enabled = false;
             RST_T.Location = new Point(127, 3);
             RST_T.Maximum = new decimal(new int[] { 9, 0, 0, 0 });
             RST_T.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -700,6 +703,7 @@
             FrequencyInput.Name = "FrequencyInput";
             FrequencyInput.Size = new Size(208, 36);
             FrequencyInput.TabIndex = 35;
+            FrequencyInput.Leave += FrequencyInput_Leave;
             // 
             // label5
             // 
@@ -733,8 +737,8 @@
             flowLayoutPanel1.Controls.Add(C4FMMode);
             flowLayoutPanel1.Controls.Add(D_STARMode);
             flowLayoutPanel1.Controls.Add(NXDNMode);
-            flowLayoutPanel1.Controls.Add(radioButton11);
-            flowLayoutPanel1.Controls.Add(radioButton12);
+            flowLayoutPanel1.Controls.Add(PacketMode);
+            flowLayoutPanel1.Controls.Add(MSK144Mode);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(3, 30);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -785,6 +789,7 @@
             CWMode.TabStop = true;
             CWMode.Text = "CW";
             CWMode.UseVisualStyleBackColor = true;
+            CWMode.CheckedChanged += CWMode_CheckedChanged;
             // 
             // FT8Mode
             // 
@@ -868,27 +873,27 @@
             NXDNMode.Text = "NXDN";
             NXDNMode.UseVisualStyleBackColor = true;
             // 
-            // radioButton11
+            // PacketMode
             // 
-            radioButton11.AutoSize = true;
-            radioButton11.Location = new Point(13, 165);
-            radioButton11.Name = "radioButton11";
-            radioButton11.Size = new Size(108, 32);
-            radioButton11.TabIndex = 27;
-            radioButton11.TabStop = true;
-            radioButton11.Text = "Packet";
-            radioButton11.UseVisualStyleBackColor = true;
+            PacketMode.AutoSize = true;
+            PacketMode.Location = new Point(13, 165);
+            PacketMode.Name = "PacketMode";
+            PacketMode.Size = new Size(108, 32);
+            PacketMode.TabIndex = 27;
+            PacketMode.TabStop = true;
+            PacketMode.Text = "Packet";
+            PacketMode.UseVisualStyleBackColor = true;
             // 
-            // radioButton12
+            // MSK144Mode
             // 
-            radioButton12.AutoSize = true;
-            radioButton12.Location = new Point(127, 165);
-            radioButton12.Name = "radioButton12";
-            radioButton12.Size = new Size(126, 32);
-            radioButton12.TabIndex = 28;
-            radioButton12.TabStop = true;
-            radioButton12.Text = "MSK144";
-            radioButton12.UseVisualStyleBackColor = true;
+            MSK144Mode.AutoSize = true;
+            MSK144Mode.Location = new Point(127, 165);
+            MSK144Mode.Name = "MSK144Mode";
+            MSK144Mode.Size = new Size(126, 32);
+            MSK144Mode.TabIndex = 28;
+            MSK144Mode.TabStop = true;
+            MSK144Mode.Text = "MSK144";
+            MSK144Mode.UseVisualStyleBackColor = true;
             // 
             // CallSignInput
             // 
@@ -1063,8 +1068,8 @@
         private RadioButton C4FMMode;
         private RadioButton D_STARMode;
         private RadioButton NXDNMode;
-        private RadioButton radioButton11;
-        private RadioButton radioButton12;
+        private RadioButton PacketMode;
+        private RadioButton MSK144Mode;
         private TextBox CallSignInput;
         private Label label3;
         private DateTimePicker EndTime;
@@ -1096,7 +1101,7 @@
         private CheckBox IsEME;
         private CheckBox IsRelayStation;
         private CheckBox IsSatellite;
-        private CheckBox checkBox1;
+        private CheckBox IsQSL;
         private CheckBox IsQRP;
         private CheckBox IsMeteoricTrail;
         private Button SaveLogBtn;
