@@ -36,10 +36,27 @@
             CallSignLab = new ToolStripLabel();
             LogShowList = new FlowLayoutPanel();
             panel1 = new Panel();
+            groupBox13 = new GroupBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
             groupBox5 = new GroupBox();
+            groupBox12 = new GroupBox();
+            RMKSInPut = new TextBox();
+            groupBox10 = new GroupBox();
+            OPInPut = new TextBox();
+            groupBox11 = new GroupBox();
+            label10 = new Label();
+            HeightInPut = new TextBox();
+            groupBox9 = new GroupBox();
+            ANTInPut = new TextBox();
+            groupBox8 = new GroupBox();
+            label7 = new Label();
+            PowInPut = new TextBox();
+            groupBox7 = new GroupBox();
+            RIGInPut = new TextBox();
             groupBox6 = new GroupBox();
             QTHInPut = new TextBox();
             groupBox4 = new GroupBox();
+            label8 = new Label();
             groupBox3 = new GroupBox();
             flowLayoutPanel3 = new FlowLayoutPanel();
             RRST_R = new NumericUpDown();
@@ -59,10 +76,10 @@
             FmMode = new RadioButton();
             AMMode = new RadioButton();
             SSBMode = new RadioButton();
+            CWMode = new RadioButton();
             FT8Mode = new RadioButton();
             FT4Mode = new RadioButton();
             SSTVMode = new RadioButton();
-            CWMode = new RadioButton();
             DMRMode = new RadioButton();
             C4FMMode = new RadioButton();
             D_STARMode = new RadioButton();
@@ -79,7 +96,14 @@
             label1 = new Label();
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
+            groupBox13.SuspendLayout();
             groupBox5.SuspendLayout();
+            groupBox12.SuspendLayout();
+            groupBox10.SuspendLayout();
+            groupBox11.SuspendLayout();
+            groupBox9.SuspendLayout();
+            groupBox8.SuspendLayout();
+            groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -103,7 +127,7 @@
             toolStrip1.Location = new Point(8, 8);
             toolStrip1.Margin = new Padding(0, 0, 0, 8);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(2522, 39);
+            toolStrip1.Size = new Size(1328, 39);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -147,7 +171,7 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(2028, 1313);
+            LogShowList.Size = new Size(834, 1339);
             LogShowList.TabIndex = 1;
             // 
             // panel1
@@ -155,28 +179,203 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel1.AutoScroll = true;
             panel1.AutoScrollMargin = new Size(0, 20);
+            panel1.Controls.Add(groupBox13);
             panel1.Controls.Add(groupBox5);
             panel1.Controls.Add(groupBox4);
             panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            panel1.Location = new Point(2053, 60);
+            panel1.Location = new Point(859, 60);
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(20);
-            panel1.Size = new Size(477, 1313);
+            panel1.Size = new Size(477, 1339);
             panel1.TabIndex = 2;
+            // 
+            // groupBox13
+            // 
+            groupBox13.Controls.Add(tableLayoutPanel1);
+            groupBox13.Dock = DockStyle.Top;
+            groupBox13.Location = new Point(20, 1169);
+            groupBox13.Name = "groupBox13";
+            groupBox13.Size = new Size(411, 188);
+            groupBox13.TabIndex = 27;
+            groupBox13.TabStop = false;
+            groupBox13.Text = "通联标记";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(3, 30);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel1.Size = new Size(405, 155);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(groupBox12);
+            groupBox5.Controls.Add(groupBox10);
+            groupBox5.Controls.Add(groupBox11);
+            groupBox5.Controls.Add(groupBox9);
+            groupBox5.Controls.Add(groupBox8);
+            groupBox5.Controls.Add(groupBox7);
             groupBox5.Controls.Add(groupBox6);
             groupBox5.Dock = DockStyle.Top;
             groupBox5.Location = new Point(20, 577);
             groupBox5.Margin = new Padding(3, 20, 3, 3);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(10, 3, 10, 3);
-            groupBox5.Size = new Size(437, 713);
+            groupBox5.Size = new Size(411, 592);
             groupBox5.TabIndex = 26;
             groupBox5.TabStop = false;
             groupBox5.Text = "其他通联信息";
+            // 
+            // groupBox12
+            // 
+            groupBox12.Controls.Add(RMKSInPut);
+            groupBox12.Location = new Point(10, 428);
+            groupBox12.Name = "groupBox12";
+            groupBox12.Padding = new Padding(5);
+            groupBox12.Size = new Size(395, 153);
+            groupBox12.TabIndex = 7;
+            groupBox12.TabStop = false;
+            groupBox12.Text = "备注信息";
+            // 
+            // RMKSInPut
+            // 
+            RMKSInPut.BorderStyle = BorderStyle.FixedSingle;
+            RMKSInPut.Dock = DockStyle.Fill;
+            RMKSInPut.Location = new Point(5, 32);
+            RMKSInPut.Multiline = true;
+            RMKSInPut.Name = "RMKSInPut";
+            RMKSInPut.Size = new Size(385, 116);
+            RMKSInPut.TabIndex = 0;
+            // 
+            // groupBox10
+            // 
+            groupBox10.Controls.Add(OPInPut);
+            groupBox10.Location = new Point(139, 347);
+            groupBox10.Name = "groupBox10";
+            groupBox10.Padding = new Padding(5);
+            groupBox10.Size = new Size(266, 75);
+            groupBox10.TabIndex = 6;
+            groupBox10.TabStop = false;
+            groupBox10.Text = "OP";
+            // 
+            // OPInPut
+            // 
+            OPInPut.BorderStyle = BorderStyle.FixedSingle;
+            OPInPut.Dock = DockStyle.Fill;
+            OPInPut.Location = new Point(5, 32);
+            OPInPut.Name = "OPInPut";
+            OPInPut.Size = new Size(256, 34);
+            OPInPut.TabIndex = 0;
+            // 
+            // groupBox11
+            // 
+            groupBox11.Controls.Add(label10);
+            groupBox11.Controls.Add(HeightInPut);
+            groupBox11.Location = new Point(10, 347);
+            groupBox11.Name = "groupBox11";
+            groupBox11.Padding = new Padding(5);
+            groupBox11.Size = new Size(123, 75);
+            groupBox11.TabIndex = 5;
+            groupBox11.TabStop = false;
+            groupBox11.Text = "发射高度";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(85, 40);
+            label10.Name = "label10";
+            label10.Size = new Size(34, 28);
+            label10.TabIndex = 3;
+            label10.Text = "M";
+            // 
+            // HeightInPut
+            // 
+            HeightInPut.BorderStyle = BorderStyle.FixedSingle;
+            HeightInPut.Location = new Point(5, 32);
+            HeightInPut.Name = "HeightInPut";
+            HeightInPut.Size = new Size(77, 34);
+            HeightInPut.TabIndex = 0;
+            HeightInPut.TextAlign = HorizontalAlignment.Center;
+            // 
+            // groupBox9
+            // 
+            groupBox9.Controls.Add(ANTInPut);
+            groupBox9.Location = new Point(10, 270);
+            groupBox9.Name = "groupBox9";
+            groupBox9.Padding = new Padding(5);
+            groupBox9.Size = new Size(395, 71);
+            groupBox9.TabIndex = 3;
+            groupBox9.TabStop = false;
+            groupBox9.Text = "天馈情况";
+            // 
+            // ANTInPut
+            // 
+            ANTInPut.BorderStyle = BorderStyle.FixedSingle;
+            ANTInPut.Dock = DockStyle.Fill;
+            ANTInPut.Location = new Point(5, 32);
+            ANTInPut.Name = "ANTInPut";
+            ANTInPut.Size = new Size(385, 34);
+            ANTInPut.TabIndex = 0;
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(label7);
+            groupBox8.Controls.Add(PowInPut);
+            groupBox8.Location = new Point(292, 189);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Padding = new Padding(5);
+            groupBox8.Size = new Size(113, 75);
+            groupBox8.TabIndex = 2;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "功率";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(73, 38);
+            label7.Name = "label7";
+            label7.Size = new Size(35, 28);
+            label7.TabIndex = 3;
+            label7.Text = "W";
+            // 
+            // PowInPut
+            // 
+            PowInPut.BorderStyle = BorderStyle.FixedSingle;
+            PowInPut.Location = new Point(5, 32);
+            PowInPut.Name = "PowInPut";
+            PowInPut.Size = new Size(65, 34);
+            PowInPut.TabIndex = 0;
+            PowInPut.TextAlign = HorizontalAlignment.Center;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(RIGInPut);
+            groupBox7.Location = new Point(10, 189);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Padding = new Padding(5);
+            groupBox7.Size = new Size(276, 75);
+            groupBox7.TabIndex = 1;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "设备";
+            // 
+            // RIGInPut
+            // 
+            RIGInPut.BorderStyle = BorderStyle.FixedSingle;
+            RIGInPut.Dock = DockStyle.Fill;
+            RIGInPut.Location = new Point(5, 32);
+            RIGInPut.Name = "RIGInPut";
+            RIGInPut.Size = new Size(266, 34);
+            RIGInPut.TabIndex = 0;
             // 
             // groupBox6
             // 
@@ -185,7 +384,7 @@
             groupBox6.Location = new Point(10, 30);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(5);
-            groupBox6.Size = new Size(417, 153);
+            groupBox6.Size = new Size(391, 153);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "QTH";
@@ -197,12 +396,13 @@
             QTHInPut.Location = new Point(5, 32);
             QTHInPut.Multiline = true;
             QTHInPut.Name = "QTHInPut";
-            QTHInPut.Size = new Size(407, 116);
+            QTHInPut.Size = new Size(381, 116);
             QTHInPut.TabIndex = 0;
             // 
             // groupBox4
             // 
             groupBox4.BackgroundImageLayout = ImageLayout.Center;
+            groupBox4.Controls.Add(label8);
             groupBox4.Controls.Add(groupBox3);
             groupBox4.Controls.Add(label6);
             groupBox4.Controls.Add(groupBox2);
@@ -223,17 +423,26 @@
             groupBox4.Margin = new Padding(3, 3, 3, 20);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(10, 3, 10, 3);
-            groupBox4.Size = new Size(437, 557);
+            groupBox4.Size = new Size(411, 557);
             groupBox4.TabIndex = 25;
             groupBox4.TabStop = false;
             groupBox4.Text = "基本通联信息";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(346, 433);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 28);
+            label8.TabIndex = 4;
+            label8.Text = "Mhz";
+            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(flowLayoutPanel3);
-            groupBox3.Location = new Point(222, 467);
+            groupBox3.Location = new Point(207, 467);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(192, 73);
+            groupBox3.Size = new Size(194, 73);
             groupBox3.TabIndex = 39;
             groupBox3.TabStop = false;
             groupBox3.Text = "RRST";
@@ -246,7 +455,7 @@
             flowLayoutPanel3.Dock = DockStyle.Fill;
             flowLayoutPanel3.Location = new Point(3, 30);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(186, 40);
+            flowLayoutPanel3.Size = new Size(188, 40);
             flowLayoutPanel3.TabIndex = 23;
             // 
             // RRST_R
@@ -291,7 +500,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(252, 482);
+            label6.Location = new Point(237, 482);
             label6.Name = "label6";
             label6.Size = new Size(0, 28);
             label6.TabIndex = 38;
@@ -299,9 +508,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(flowLayoutPanel2);
-            groupBox2.Location = new Point(27, 467);
+            groupBox2.Location = new Point(10, 467);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(192, 73);
+            groupBox2.Size = new Size(194, 73);
             groupBox2.TabIndex = 37;
             groupBox2.TabStop = false;
             groupBox2.Text = "RST";
@@ -314,7 +523,7 @@
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(3, 30);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(186, 40);
+            flowLayoutPanel2.Size = new Size(188, 40);
             flowLayoutPanel2.TabIndex = 23;
             // 
             // RST_R
@@ -359,7 +568,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(63, 482);
+            label4.Location = new Point(48, 482);
             label4.Name = "label4";
             label4.Size = new Size(0, 28);
             label4.TabIndex = 36;
@@ -368,15 +577,15 @@
             // 
             FrequencyInput.BackColor = SystemColors.Control;
             FrequencyInput.FormattingEnabled = true;
-            FrequencyInput.Location = new Point(142, 425);
+            FrequencyInput.Location = new Point(137, 425);
             FrequencyInput.Name = "FrequencyInput";
-            FrequencyInput.Size = new Size(257, 36);
+            FrequencyInput.Size = new Size(208, 36);
             FrequencyInput.TabIndex = 35;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(47, 428);
+            label5.Location = new Point(35, 429);
             label5.Name = "label5";
             label5.Size = new Size(96, 28);
             label5.TabIndex = 33;
@@ -387,7 +596,7 @@
             groupBox1.Controls.Add(flowLayoutPanel1);
             groupBox1.Location = new Point(10, 176);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(417, 240);
+            groupBox1.Size = new Size(391, 240);
             groupBox1.TabIndex = 34;
             groupBox1.TabStop = false;
             groupBox1.Text = "模    式";
@@ -411,7 +620,7 @@
             flowLayoutPanel1.Location = new Point(3, 30);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(10);
-            flowLayoutPanel1.Size = new Size(411, 207);
+            flowLayoutPanel1.Size = new Size(385, 207);
             flowLayoutPanel1.TabIndex = 18;
             // 
             // FmMode
@@ -447,6 +656,17 @@
             SSBMode.Text = "SSB";
             SSBMode.UseVisualStyleBackColor = true;
             // 
+            // CWMode
+            // 
+            CWMode.AutoSize = true;
+            CWMode.Location = new Point(254, 13);
+            CWMode.Name = "CWMode";
+            CWMode.Size = new Size(74, 32);
+            CWMode.TabIndex = 22;
+            CWMode.TabStop = true;
+            CWMode.Text = "CW";
+            CWMode.UseVisualStyleBackColor = true;
+            // 
             // FT8Mode
             // 
             FT8Mode.AutoSize = true;
@@ -480,17 +700,6 @@
             SSTVMode.TabStop = true;
             SSTVMode.Text = "SSTV";
             SSTVMode.UseVisualStyleBackColor = true;
-            // 
-            // CWMode
-            // 
-            CWMode.AutoSize = true;
-            CWMode.Location = new Point(254, 13);
-            CWMode.Name = "CWMode";
-            CWMode.Size = new Size(74, 32);
-            CWMode.TabIndex = 22;
-            CWMode.TabStop = true;
-            CWMode.Text = "CW";
-            CWMode.UseVisualStyleBackColor = true;
             // 
             // DMRMode
             // 
@@ -563,7 +772,7 @@
             // 
             CallSignInput.BorderStyle = BorderStyle.FixedSingle;
             CallSignInput.CharacterCasing = CharacterCasing.Upper;
-            CallSignInput.Location = new Point(142, 131);
+            CallSignInput.Location = new Point(130, 131);
             CallSignInput.Multiline = true;
             CallSignInput.Name = "CallSignInput";
             CallSignInput.Size = new Size(257, 35);
@@ -574,7 +783,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(47, 135);
+            label3.Location = new Point(35, 135);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
             label3.TabIndex = 31;
@@ -584,7 +793,7 @@
             // 
             EndTime.CustomFormat = "HH:mm";
             EndTime.Format = DateTimePickerFormat.Custom;
-            EndTime.Location = new Point(304, 88);
+            EndTime.Location = new Point(292, 88);
             EndTime.Name = "EndTime";
             EndTime.ShowUpDown = true;
             EndTime.Size = new Size(95, 34);
@@ -594,7 +803,7 @@
             // 
             EndData.CustomFormat = "yyyy-MM-dd";
             EndData.Format = DateTimePickerFormat.Custom;
-            EndData.Location = new Point(142, 88);
+            EndData.Location = new Point(130, 88);
             EndData.Name = "EndData";
             EndData.ShowUpDown = true;
             EndData.Size = new Size(156, 34);
@@ -603,7 +812,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(47, 90);
+            label2.Location = new Point(35, 90);
             label2.Name = "label2";
             label2.Size = new Size(96, 28);
             label2.TabIndex = 26;
@@ -613,7 +822,7 @@
             // 
             StartTime.CustomFormat = "HH:mm";
             StartTime.Format = DateTimePickerFormat.Custom;
-            StartTime.Location = new Point(304, 39);
+            StartTime.Location = new Point(292, 39);
             StartTime.Name = "StartTime";
             StartTime.ShowUpDown = true;
             StartTime.Size = new Size(95, 34);
@@ -623,7 +832,7 @@
             // 
             StartData.CustomFormat = "yyyy-MM-dd";
             StartData.Format = DateTimePickerFormat.Custom;
-            StartData.Location = new Point(142, 39);
+            StartData.Location = new Point(130, 39);
             StartData.Name = "StartData";
             StartData.ShowUpDown = true;
             StartData.Size = new Size(156, 34);
@@ -632,7 +841,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(47, 42);
+            label1.Location = new Point(35, 42);
             label1.Name = "label1";
             label1.Size = new Size(96, 28);
             label1.TabIndex = 25;
@@ -643,7 +852,7 @@
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(2538, 1384);
+            ClientSize = new Size(1344, 1410);
             Controls.Add(panel1);
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
@@ -657,7 +866,20 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             panel1.ResumeLayout(false);
+            groupBox13.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
+            groupBox12.ResumeLayout(false);
+            groupBox12.PerformLayout();
+            groupBox10.ResumeLayout(false);
+            groupBox10.PerformLayout();
+            groupBox11.ResumeLayout(false);
+            groupBox11.PerformLayout();
+            groupBox9.ResumeLayout(false);
+            groupBox9.PerformLayout();
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             groupBox4.ResumeLayout(false);
@@ -729,5 +951,22 @@
         private GroupBox groupBox5;
         private GroupBox groupBox6;
         private TextBox QTHInPut;
+        private GroupBox groupBox7;
+        private TextBox RIGInPut;
+        private GroupBox groupBox8;
+        private TextBox PowInPut;
+        private Label label7;
+        private Label label8;
+        private GroupBox groupBox9;
+        private TextBox ANTInPut;
+        private GroupBox groupBox11;
+        private Label label10;
+        private TextBox HeightInPut;
+        private GroupBox groupBox12;
+        private TextBox RMKSInPut;
+        private GroupBox groupBox10;
+        private TextBox OPInPut;
+        private GroupBox groupBox13;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
