@@ -190,6 +190,7 @@ namespace SharpLog
         private void SaveLogBtn_Click(object sender, EventArgs e)
         {
 
+
         }
 
         /// <summary>
