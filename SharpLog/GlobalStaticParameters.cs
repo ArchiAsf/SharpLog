@@ -63,7 +63,65 @@ namespace SharpLog
         public static Color dgvRowSelectedTextColor = Color.FromArgb(255, 255, 255); // 数据表格选中行字体颜色
         #endregion
 
-        
+        #region 无线电相关参数
+        // C# 字符串数组 - SSTV全波段常用频点（全球通用）
+        readonly static public string[] sstvCommonFrequencies = new string[]
+        {
+            "1.890MHz",    // 160米 - SSTV呼叫
+            "3.845MHz",    // 80米 - 主呼叫（美洲/通用）
+            "7.171MHz",    // 40米 - 主呼叫（美洲）
+            "7.170MHz",    // 40米 - 主呼叫（亚非）
+            "10.132MHz",   // 30米 - 窄带SSTV
+            "14.230MHz",   // 20米 - 全球最活跃主呼叫
+            "18.117MHz",   // 17米 - 常规通联
+            "21.340MHz",   // 15米 - 主呼叫
+            "24.927MHz",   // 12米 - 常规通联
+            "28.680MHz",   // 10米 - 主呼叫
+            "50.680MHz",   // 6米 - FM呼叫
+            "144.195MHz",  // 2米 - SSB SSTV
+            "144.500MHz",  // 2米 - FM常规通联
+            "145.800MHz"   // 2米 - ISS卫星SSTV下行
+        };
+
+        // FT8常用热门频点
+        readonly public static string[] Ft8CommonFrequencies = new string[]
+        {
+        "1.840MHz",    // 160米 - FT8主频点
+        "3.570MHz",    // 80米 - FT8主频点
+        "5.357MHz",    // 60米 - FT8专用（美洲/通用）
+        "7.074MHz",    // 40米 - FT8全球核心频点（最活跃）
+        "10.136MHz",   // 30米 - FT8主频点
+        "14.074MHz",   // 20米 - FT8全球核心频点
+        "18.095MHz",   // 17米 - FT8主频点
+        "21.074MHz",   // 15米 - FT8主频点
+        "24.915MHz",   // 12米 - FT8主频点
+        "28.074MHz",   // 10米 - FT8主频点
+        "50.313MHz",   // 6米 - FT8主频点
+        "144.174MHz",  // 2米 - VHF FT8主频点
+        "432.174MHz"   // 70厘米 - UHF FT8主频点
+        };
+
+        // FT4常用热门频点
+        readonly public static string[] Ft4CommonFrequencies = new string[]
+        {
+        "1.841MHz",    // 160米 - FT4主频点（FT8+1kHz）
+        "3.571MHz",    // 80米 - FT4主频点（FT8+1kHz）
+        "7.078MHz",    // 40米 - FT4全球核心频点
+        "10.138MHz",   // 30米 - FT4主频点
+        "14.078MHz",   // 20米 - FT4全球核心频点
+        "18.098MHz",   // 17米 - FT4主频点
+        "21.078MHz",   // 15米 - FT4主频点
+        "24.918MHz",   // 12米 - FT4主频点
+        "28.078MHz",   // 10米 - FT4主频点
+        "50.318MHz",   // 6米 - FT4主频点
+        "144.178MHz",  // 2米 - VHF FT4主频点
+        "432.178MHz"   // 70厘米 - UHF FT4主频点
+        };
+
+
+
+
+        #endregion
 
     }
 }

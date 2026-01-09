@@ -166,11 +166,12 @@
             // 
             CallSignLab.Alignment = ToolStripItemAlignment.Right;
             CallSignLab.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            CallSignLab.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
             CallSignLab.Image = (Image)resources.GetObject("CallSignLab.Image");
             CallSignLab.ImageTransparentColor = Color.Magenta;
             CallSignLab.Name = "CallSignLab";
-            CallSignLab.Size = new Size(46, 34);
-            CallSignLab.Text = "呼号";
+            CallSignLab.Size = new Size(96, 34);
+            CallSignLab.Text = "台站信息";
             // 
             // LogShowList
             // 
@@ -551,9 +552,9 @@
             label8.AutoSize = true;
             label8.Location = new Point(346, 433);
             label8.Name = "label8";
-            label8.Size = new Size(59, 28);
+            label8.Size = new Size(62, 28);
             label8.TabIndex = 4;
-            label8.Text = "Mhz";
+            label8.Text = "MHz";
             // 
             // groupBox3
             // 
@@ -795,6 +796,7 @@
             FT8Mode.TabStop = true;
             FT8Mode.Text = "FT8";
             FT8Mode.UseVisualStyleBackColor = true;
+            FT8Mode.CheckedChanged += FT8Mode_CheckedChanged;
             // 
             // FT4Mode
             // 
@@ -806,6 +808,7 @@
             FT4Mode.TabStop = true;
             FT4Mode.Text = "FT4";
             FT4Mode.UseVisualStyleBackColor = true;
+            FT4Mode.CheckedChanged += FT4Mode_CheckedChanged;
             // 
             // SSTVMode
             // 
@@ -818,6 +821,7 @@
             SSTVMode.TabStop = true;
             SSTVMode.Text = "SSTV";
             SSTVMode.UseVisualStyleBackColor = true;
+            SSTVMode.CheckedChanged += SSTVMode_CheckedChanged;
             // 
             // DMRMode
             // 

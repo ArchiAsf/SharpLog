@@ -23,10 +23,59 @@ namespace SharpLog
             FrequencyInput.ForeColor = normalTextBoxTextColor;
 
 
-            
+
 
         }
 
+        #region 设定点击不同模式时，频率下拉框的常用频率选项
 
+
+        private void SSTVMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SSTVMode.Checked == true)
+            {
+                FrequencyInput.Items.Clear();
+                FrequencyInput.Items.AddRange(sstvCommonFrequencies);
+                FrequencyInput.SelectedIndex = 5;
+            }
+            else
+            {
+                FrequencyInput.Items.Clear();
+                FrequencyInput.Text = "";
+            }
+
+        }
+
+        private void FT8Mode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FT8Mode.Checked == true)
+            {
+                FrequencyInput.Items.Clear();
+                FrequencyInput.Items.AddRange(Ft8CommonFrequencies);
+                FrequencyInput.SelectedIndex = 5;
+            }
+            else
+            {
+                FrequencyInput.Items.Clear();
+                FrequencyInput.Text = "";
+            }
+
+        }
+
+        private void FT4Mode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FT4Mode.Checked == true)
+            {
+                FrequencyInput.Items.Clear();
+                FrequencyInput.Items.AddRange(Ft4CommonFrequencies);
+                FrequencyInput.SelectedIndex = 4;
+            }
+            else
+            {
+                FrequencyInput.Items.Clear();
+                FrequencyInput.Text = "";
+            }
+        }
+        #endregion
     }
 }
