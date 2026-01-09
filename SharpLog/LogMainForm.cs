@@ -185,14 +185,6 @@ namespace SharpLog
         }
         #endregion
 
-
-        // 保存日志按钮点击事件
-        private void SaveLogBtn_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         /// <summary>
         /// 判断频率输入框中是否为例如14.270Mhz格式或是列如14.270格式，如果为前者则去掉MHz后缀，统一保存为纯数字的字符串
         /// </summary>
@@ -201,11 +193,33 @@ namespace SharpLog
         private void FrequencyInput_Leave(object sender, EventArgs e)
         {
             string freqText = FrequencyInput.Text.Trim().ToUpper();
-            if (freqText.EndsWith("MHZ")|| freqText.EndsWith("MHz")|| freqText.EndsWith("Mhz")|| freqText.EndsWith("mhz"))
+            if (freqText.EndsWith("MHZ"))
             {
                 freqText = freqText.Substring(0, freqText.Length - 3).Trim();
                 FrequencyInput.Text = freqText;
             }
+        }
+
+
+        /// <summary>
+        /// 保存日志按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveLogBtn_Click(object sender, EventArgs e)
+        {
+            // 首先验证呼号与频率输入是否合法
+            if (!(LogDataValidatorTools.ValidateCallSign(CallSignInput.Text, out string errorMessage)))
+                MessageBox.Show("呼号输入有误：" + errorMessage, "输入错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if(LogDataValidatorTools.IsValidAmateurFrequency(FrequencyInput.Text))
+                {
+                    // 呼号与频率均合法，执行保存日志操作
+
+                }
+            }
+
         }
     }
 }

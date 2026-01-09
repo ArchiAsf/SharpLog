@@ -118,8 +118,60 @@ namespace SharpLog
         "432.178MHz"   // 70厘米 - UHF FT4主频点
         };
 
+        // 国际通用合规的操作后缀列表（全大写）
+        public static readonly HashSet<string> ValidOperationSuffixes = new HashSet<string>
+        {
+            "P", "M", "MM", "AM", "E", "K", "QRP", "QRO", "A", "R", "TT"
+        };
 
-
+        /// <summary>
+        /// 公开只读的合法业余无线电频段字典
+        /// 键：标准化波段名（如"6m"、"20m"）
+        /// 值：频率区间（单位：MHz）
+        /// </summary>
+        public static readonly IReadOnlyDictionary<string, FrequencyRange> ValidAmateurBands =
+            new Dictionary<string, FrequencyRange>
+        {
+            // 长波/中波/短波（HF）
+            {"2200m", new FrequencyRange(0.1357, 0.1378)},    // 135.7KHz-137.8KHz
+            {"160m",  new FrequencyRange(1.8000, 2.0000)},    // 1.8MHz-2.0MHz
+            {"80m",   new FrequencyRange(3.5000, 3.9000)},    // 3.5MHz-3.9MHz
+            {"60m",   new FrequencyRange(5.3515, 5.3665)},    // 5.3515MHz-5.3665MHz
+            {"40m",   new FrequencyRange(7.0000, 7.2000)},    // 7.0MHz-7.2MHz
+            {"30m",   new FrequencyRange(10.1000, 10.1500)},  // 10.10MHz-10.15MHz
+            {"20m",   new FrequencyRange(14.0000, 14.3000)},  // 14.0MHz-14.3MHz
+            {"17m",   new FrequencyRange(18.0680, 18.1680)},  // 18.068MHz-18.1680MHz
+            {"15m",   new FrequencyRange(21.0000, 21.4500)},  // 21.00MHz-21.45MHz
+            {"12m",   new FrequencyRange(24.8900, 24.9900)},  // 24.89MHz-24.99MHz
+            {"10m",   new FrequencyRange(28.0000, 29.7000)},  // 28.0MHz-29.7MHz
+            
+            // 甚高频（VHF）
+            {"6m",    new FrequencyRange(50.0000, 54.0000)},  // 50MHz-54MHz
+            {"2m",    new FrequencyRange(144.0000, 148.0000)}, // 144MHz-148MHz
+            
+            // 特高频（UHF）
+            {"70cm",  new FrequencyRange(430.0000, 440.0000)}, // 430MHz-440MHz
+            {"23cm",  new FrequencyRange(1240.0000, 1300.0000)}, // 1240MHz-1300MHz
+            {"13cm",  new FrequencyRange(2300.0000, 2450.0000)}, // 2300MHz-2450MHz
+            
+            // 超高频（SHF）
+            {"9cm",   new FrequencyRange(3300.0000, 3500.0000)}, // 3300MHz-3500MHz
+            {"5cm",   new FrequencyRange(5650.0000, 5850.0000)}, // 5650MHz-5850MHz
+            {"3cm",   new FrequencyRange(10000.0000, 10500.0000)}, // 10.0GHz-10.5GHz
+            
+            // 极高频（EHF）/毫米波
+            {"1.2cm", new FrequencyRange(24000.0000, 24050.0000)}, // 24.00GHz-24.05GHz
+            {"1.2cm_ext", new FrequencyRange(24050.0000, 24250.0000)}, // 24.05GHz-24.25GHz
+            {"6mm",   new FrequencyRange(47000.0000, 47200.0000)}, // 47.0GHz-47.2GHz
+            {"4mm",   new FrequencyRange(76000.0000, 77500.0000)}, // 76.0GHz-77.5GHz
+            {"4mm_ext", new FrequencyRange(77500.0000, 78000.0000)}, // 77.5GHz-78.0GHz
+            {"4mm_ext2", new FrequencyRange(78000.0000, 81000.0000)}, // 78GHz-81GHz
+            {"2.5mm", new FrequencyRange(122250.0000, 123000.0000)}, // 122.25GHz-123.00GHz
+            {"2mm",   new FrequencyRange(134000.0000, 136000.0000)}, // 134GHz-136GHz
+            {"2mm_ext", new FrequencyRange(136000.0000, 141000.0000)}, // 136GHz-141GHz
+            {"1mm",   new FrequencyRange(241000.0000, 248000.0000)}, // 241GHz-248GHz
+            {"1mm_ext", new FrequencyRange(248000.0000, 250000.0000)} // 248GHz-250GHz
+        }.AsReadOnly();
 
         #endregion
 
