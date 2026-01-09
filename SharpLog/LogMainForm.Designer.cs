@@ -181,7 +181,7 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(830, 1339);
+            LogShowList.Size = new Size(830, 641);
             LogShowList.TabIndex = 1;
             // 
             // panel1
@@ -200,7 +200,7 @@
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(20);
-            panel1.Size = new Size(481, 1339);
+            panel1.Size = new Size(481, 641);
             panel1.TabIndex = 2;
             // 
             // groupBox13
@@ -970,7 +970,7 @@
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1344, 1410);
+            ClientSize = new Size(1344, 712);
             Controls.Add(panel1);
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
