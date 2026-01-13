@@ -11,6 +11,10 @@ namespace SharpLog
     /// </summary>
     public static class GlobalStaticParameters
     {
+        //相对路径（程序运行目录）
+        static public readonly string RelativePath = AppDomain.CurrentDomain.BaseDirectory;
+
+
         #region 设定一些要用到的颜色
         // Form（主窗体）
         public static Color logMainFormBackColor = Color.FromArgb(18, 20, 24); // 主窗体背景色

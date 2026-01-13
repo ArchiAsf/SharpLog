@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMainForm));
             toolStrip1 = new ToolStrip();
             OptionBtn = new ToolStripDropDownButton();
-            设置台站信息ToolStripMenuItem = new ToolStripMenuItem();
+            SetStationInformation = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             HelpBtn = new ToolStripDropDownButton();
             CallSignLab = new ToolStripLabel();
@@ -144,18 +144,18 @@
             // 
             // OptionBtn
             // 
-            OptionBtn.DropDownItems.AddRange(new ToolStripItem[] { 设置台站信息ToolStripMenuItem });
+            OptionBtn.DropDownItems.AddRange(new ToolStripItem[] { SetStationInformation });
             OptionBtn.Image = (Image)resources.GetObject("OptionBtn.Image");
             OptionBtn.ImageTransparentColor = Color.Magenta;
             OptionBtn.Name = "OptionBtn";
             OptionBtn.Size = new Size(94, 34);
             OptionBtn.Text = "选项";
             // 
-            // 设置台站信息ToolStripMenuItem
+            // SetStationInformation
             // 
-            设置台站信息ToolStripMenuItem.Name = "设置台站信息ToolStripMenuItem";
-            设置台站信息ToolStripMenuItem.Size = new Size(270, 34);
-            设置台站信息ToolStripMenuItem.Text = "设置台站信息";
+            SetStationInformation.Name = "SetStationInformation";
+            SetStationInformation.Size = new Size(270, 34);
+            SetStationInformation.Text = "设置台站信息";
             // 
             // toolStripSeparator1
             // 
@@ -1115,6 +1115,6 @@
         private Label label9;
         private Label label11;
         internal FlowLayoutPanel ModeSelectBox;
-        private ToolStripMenuItem 设置台站信息ToolStripMenuItem;
+        private ToolStripMenuItem SetStationInformation;
     }
 }

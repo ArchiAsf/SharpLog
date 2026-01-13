@@ -17,7 +17,7 @@ namespace SharpLog
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // SQLite数据库路径配置
-            string dbPath = Path.Combine(AppContext.BaseDirectory, "RadioLog.db");
+            string dbPath = Path.Combine(RelativePath, "RadioLog.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }
