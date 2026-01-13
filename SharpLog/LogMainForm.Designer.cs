@@ -81,7 +81,7 @@
             FrequencyInput = new ComboBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            ModeSelectBox = new FlowLayoutPanel();
             FmMode = new RadioButton();
             AMMode = new RadioButton();
             SSBMode = new RadioButton();
@@ -127,7 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)RST_S).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RST_T).BeginInit();
             groupBox1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            ModeSelectBox.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
@@ -716,7 +716,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(flowLayoutPanel1);
+            groupBox1.Controls.Add(ModeSelectBox);
             groupBox1.Location = new Point(10, 179);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(391, 240);
@@ -724,27 +724,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "模    式";
             // 
-            // flowLayoutPanel1
+            // ModeSelectBox
             // 
-            flowLayoutPanel1.Controls.Add(FmMode);
-            flowLayoutPanel1.Controls.Add(AMMode);
-            flowLayoutPanel1.Controls.Add(SSBMode);
-            flowLayoutPanel1.Controls.Add(CWMode);
-            flowLayoutPanel1.Controls.Add(FT8Mode);
-            flowLayoutPanel1.Controls.Add(FT4Mode);
-            flowLayoutPanel1.Controls.Add(SSTVMode);
-            flowLayoutPanel1.Controls.Add(DMRMode);
-            flowLayoutPanel1.Controls.Add(C4FMMode);
-            flowLayoutPanel1.Controls.Add(D_STARMode);
-            flowLayoutPanel1.Controls.Add(NXDNMode);
-            flowLayoutPanel1.Controls.Add(PacketMode);
-            flowLayoutPanel1.Controls.Add(MSK144Mode);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(3, 30);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(10);
-            flowLayoutPanel1.Size = new Size(385, 207);
-            flowLayoutPanel1.TabIndex = 18;
+            ModeSelectBox.Controls.Add(FmMode);
+            ModeSelectBox.Controls.Add(AMMode);
+            ModeSelectBox.Controls.Add(SSBMode);
+            ModeSelectBox.Controls.Add(CWMode);
+            ModeSelectBox.Controls.Add(FT8Mode);
+            ModeSelectBox.Controls.Add(FT4Mode);
+            ModeSelectBox.Controls.Add(SSTVMode);
+            ModeSelectBox.Controls.Add(DMRMode);
+            ModeSelectBox.Controls.Add(C4FMMode);
+            ModeSelectBox.Controls.Add(D_STARMode);
+            ModeSelectBox.Controls.Add(NXDNMode);
+            ModeSelectBox.Controls.Add(PacketMode);
+            ModeSelectBox.Controls.Add(MSK144Mode);
+            ModeSelectBox.Dock = DockStyle.Fill;
+            ModeSelectBox.Location = new Point(3, 30);
+            ModeSelectBox.Name = "ModeSelectBox";
+            ModeSelectBox.Padding = new Padding(10);
+            ModeSelectBox.Size = new Size(385, 207);
+            ModeSelectBox.TabIndex = 18;
             // 
             // FmMode
             // 
@@ -818,7 +818,7 @@
             // SSTVMode
             // 
             SSTVMode.AutoSize = true;
-            flowLayoutPanel1.SetFlowBreak(SSTVMode, true);
+            ModeSelectBox.SetFlowBreak(SSTVMode, true);
             SSTVMode.Location = new Point(175, 51);
             SSTVMode.Name = "SSTVMode";
             SSTVMode.Size = new Size(91, 32);
@@ -864,7 +864,7 @@
             // NXDNMode
             // 
             NXDNMode.AutoSize = true;
-            flowLayoutPanel1.SetFlowBreak(NXDNMode, true);
+            ModeSelectBox.SetFlowBreak(NXDNMode, true);
             NXDNMode.Location = new Point(13, 127);
             NXDNMode.Name = "NXDNMode";
             NXDNMode.Size = new Size(105, 32);
@@ -1025,8 +1025,8 @@
             ((System.ComponentModel.ISupportInitialize)RST_S).EndInit();
             ((System.ComponentModel.ISupportInitialize)RST_T).EndInit();
             groupBox1.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
+            ModeSelectBox.ResumeLayout(false);
+            ModeSelectBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1056,7 +1056,6 @@
         private ComboBox FrequencyInput;
         private Label label5;
         private GroupBox groupBox1;
-        private FlowLayoutPanel flowLayoutPanel1;
         private RadioButton FmMode;
         private RadioButton AMMode;
         private RadioButton SSBMode;
@@ -1107,5 +1106,6 @@
         private Button SaveLogBtn;
         private Label label9;
         private Label label11;
+        internal FlowLayoutPanel ModeSelectBox;
     }
 }

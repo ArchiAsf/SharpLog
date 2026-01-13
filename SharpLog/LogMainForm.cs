@@ -208,7 +208,7 @@ namespace SharpLog
         /// <param name="e"></param>
         private void SaveLogBtn_Click(object sender, EventArgs e)
         {
-            if(LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim()))
+            if(LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(),ModeSelectBox))
             {
                 
 
@@ -217,6 +217,7 @@ namespace SharpLog
 
 
             }
+
 
         }
     }
