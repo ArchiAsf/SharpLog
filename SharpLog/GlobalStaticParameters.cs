@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SharpLog
 {
+    /// <summary>
+    /// 全局静态参数变量类
+    /// </summary>
     public static class GlobalStaticParameters
     {
         #region 设定一些要用到的颜色
@@ -118,11 +121,12 @@ namespace SharpLog
         "432.178MHz"   // 70厘米 - UHF FT4主频点
         };
 
-        // 国际通用合规的操作后缀列表（全大写）
-        public static readonly HashSet<string> ValidOperationSuffixes = new HashSet<string>
-        {
-            "P", "M", "MM", "AM", "E", "K", "QRP", "QRO", "A", "R", "TT"
-        };
+        /*        // 国际通用合规的操作后缀列表（全大写）
+                public static readonly HashSet<string> ValidOperationSuffixes = new HashSet<string>
+                {
+                    "P", "M", "MM", "AM", "E", "K", "QRP", "QRO", "A", "R", "TT"
+                };
+         */
 
         /// <summary>
         /// 公开只读的合法业余无线电频段字典

@@ -67,13 +67,13 @@
             groupBox4 = new GroupBox();
             label8 = new Label();
             groupBox3 = new GroupBox();
-            flowLayoutPanel3 = new FlowLayoutPanel();
+            RRSTBox = new FlowLayoutPanel();
             RRST_R = new NumericUpDown();
             RRST_S = new NumericUpDown();
             RRST_T = new NumericUpDown();
             label6 = new Label();
             groupBox2 = new GroupBox();
-            flowLayoutPanel2 = new FlowLayoutPanel();
+            RSTBox = new FlowLayoutPanel();
             RST_R = new NumericUpDown();
             RST_S = new NumericUpDown();
             RST_T = new NumericUpDown();
@@ -117,12 +117,12 @@
             groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
+            RRSTBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RRST_R).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RRST_S).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RRST_T).BeginInit();
             groupBox2.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
+            RSTBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)RST_R).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RST_S).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RST_T).BeginInit();
@@ -559,7 +559,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(flowLayoutPanel3);
+            groupBox3.Controls.Add(RRSTBox);
             groupBox3.Location = new Point(207, 467);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(194, 73);
@@ -567,16 +567,16 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "RRST";
             // 
-            // flowLayoutPanel3
+            // RRSTBox
             // 
-            flowLayoutPanel3.Controls.Add(RRST_R);
-            flowLayoutPanel3.Controls.Add(RRST_S);
-            flowLayoutPanel3.Controls.Add(RRST_T);
-            flowLayoutPanel3.Dock = DockStyle.Fill;
-            flowLayoutPanel3.Location = new Point(3, 30);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(188, 40);
-            flowLayoutPanel3.TabIndex = 23;
+            RRSTBox.Controls.Add(RRST_R);
+            RRSTBox.Controls.Add(RRST_S);
+            RRSTBox.Controls.Add(RRST_T);
+            RRSTBox.Dock = DockStyle.Fill;
+            RRSTBox.Location = new Point(3, 30);
+            RRSTBox.Name = "RRSTBox";
+            RRSTBox.Size = new Size(188, 40);
+            RRSTBox.TabIndex = 23;
             // 
             // RRST_R
             // 
@@ -628,7 +628,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(flowLayoutPanel2);
+            groupBox2.Controls.Add(RSTBox);
             groupBox2.Location = new Point(10, 467);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(194, 73);
@@ -636,16 +636,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "RST";
             // 
-            // flowLayoutPanel2
+            // RSTBox
             // 
-            flowLayoutPanel2.Controls.Add(RST_R);
-            flowLayoutPanel2.Controls.Add(RST_S);
-            flowLayoutPanel2.Controls.Add(RST_T);
-            flowLayoutPanel2.Dock = DockStyle.Fill;
-            flowLayoutPanel2.Location = new Point(3, 30);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(188, 40);
-            flowLayoutPanel2.TabIndex = 23;
+            RSTBox.Controls.Add(RST_R);
+            RSTBox.Controls.Add(RST_S);
+            RSTBox.Controls.Add(RST_T);
+            RSTBox.Dock = DockStyle.Fill;
+            RSTBox.Location = new Point(3, 30);
+            RSTBox.Name = "RSTBox";
+            RSTBox.Size = new Size(188, 40);
+            RSTBox.TabIndex = 23;
             // 
             // RST_R
             // 
@@ -1015,12 +1015,12 @@
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
-            flowLayoutPanel3.ResumeLayout(false);
+            RRSTBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)RRST_R).EndInit();
             ((System.ComponentModel.ISupportInitialize)RRST_S).EndInit();
             ((System.ComponentModel.ISupportInitialize)RRST_T).EndInit();
             groupBox2.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
+            RSTBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)RST_R).EndInit();
             ((System.ComponentModel.ISupportInitialize)RST_S).EndInit();
             ((System.ComponentModel.ISupportInitialize)RST_T).EndInit();
@@ -1042,13 +1042,13 @@
         private Panel panel1;
         private GroupBox groupBox4;
         private GroupBox groupBox3;
-        private FlowLayoutPanel flowLayoutPanel3;
+        private FlowLayoutPanel RRSTBox;
         private NumericUpDown RRST_R;
         private NumericUpDown RRST_S;
         private NumericUpDown RRST_T;
         private Label label6;
         private GroupBox groupBox2;
-        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel RSTBox;
         private NumericUpDown RST_R;
         private NumericUpDown RST_S;
         private NumericUpDown RST_T;

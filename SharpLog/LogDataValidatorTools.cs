@@ -15,16 +15,18 @@ namespace SharpLog
         /// 对外调用汇总合法性校验
         /// </summary>
         /// <returns>如果合法返回true，否则返回false</returns>
-        public static bool IsValidity(string callSign, string frequency, FlowLayoutPanel modeSelectBox)
+        public static bool IsValidity(string callSign, string frequency, FlowLayoutPanel modeSelectBox, FlowLayoutPanel RSTPanel, FlowLayoutPanel RRSTPanel)
         {
             string outErrorText = string.Empty;
 
             bool isModeValid = IsValidAmateurFrequency(frequency, out string frequencyErrorText);
             bool isCallSignValid = HasIllegalCharacters(callSign, out string callSignErrorText);
             bool isModeSelected = IsSelectMode(modeSelectBox, out string modeErrorText);
+            bool isRSTValid = IsWriteRST(RSTPanel, out string RSTErrorText);
+            bool isRRSTValid = IsWriteRST(RRSTPanel, out string RRSTErrorText);
 
             //判断呼号、频率和模式是否合法
-            if (true && isCallSignValid && isModeValid && isModeSelected)
+            if (true && isCallSignValid && isModeValid && isModeSelected && isRSTValid && isRRSTValid)
                 /*都合法输出True*/
                 return true;
             else
@@ -33,6 +35,9 @@ namespace SharpLog
                 if (callSignErrorText != String.Empty) { outErrorText = $"{outErrorText}呼号输入错误：{callSignErrorText}\r\n"; }
                 if (frequencyErrorText != String.Empty) { outErrorText = $"{outErrorText}频率输入错误：{frequencyErrorText}\r\n"; }
                 if (modeErrorText != String.Empty) { outErrorText = $"{outErrorText}模式选择错误：{modeErrorText}\r\n"; }
+                if (RSTErrorText != String.Empty) { outErrorText = $"{outErrorText}对方信号报告输入错误：{RSTErrorText}\r\n"; }
+                if (RRSTErrorText != String.Empty) { outErrorText = $"{outErrorText}己方信号报告输入错误：{RRSTErrorText}\r\n"; }
+
 
                 //显示错误提示
                 MessageBox.Show(outErrorText, "输入错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -40,26 +45,9 @@ namespace SharpLog
                 //返回False
                 return false;
             }
-
-            /*            //判定呼号和频率是否都合法
-                        if (IsSelectMode(modeSelectBox, out string modeErrorText))
-                        {
-                            isValidity = false;
-                        }
-                        //判定呼号是否合法
-                        else if (HasIllegalCharacters(callSign, out string callSignErrorText))
-                        {
-                            MessageBox.Show($"呼号包含非法字符：{callSignErrorText}", "呼号格式错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
-                        }
-                        //判定频率是否合法
-                        else if (!IsValidAmateurFrequency(frequency, out string frequencyErrorText))
-                        {
-                            MessageBox.Show($"{frequencyErrorText}", "频率格式错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
-                        }*/
-
         }
+
+        #region 私有内置判定方法
 
         /// <summary>
         /// 判断呼号中是否包含除字母、数字、斜杠外的非法字符
@@ -155,7 +143,6 @@ namespace SharpLog
         }
 
 
-
         /// <summary>
         /// 判断是否选择了通讯模式
         /// </summary>
@@ -180,6 +167,33 @@ namespace SharpLog
             modeErrorText = "未选择任何模式";
             return false;
         }
+
+        /// <summary>
+        /// 判断信号报告是否填写完整，是否合法
+        /// </summary>
+        /// <param name="RSTPanel">包装信号报告输入组件的容器</param>
+        /// <param name="RSTErrorText">报错信息文本</param>
+        /// <returns>true：填写完整且合法；false：不完整或不合法</returns>
+        private static bool IsWriteRST(FlowLayoutPanel RSTPanel, out string RSTErrorText)
+        {
+            RSTErrorText = string.Empty;
+            foreach (NumericUpDown nud in RSTPanel.Controls)
+            {
+                if (nud.Value == null)
+                {
+                    RSTErrorText = "信号报告不可为空";
+                    return false;
+                }
+                if (nud.Value > nud.Maximum || nud.Value < nud.Minimum)
+                {
+                    RSTErrorText = "信号报告数值超出范围";
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        #endregion
 
 
         /*
