@@ -208,16 +208,14 @@ namespace SharpLog
         /// <param name="e"></param>
         private void SaveLogBtn_Click(object sender, EventArgs e)
         {
-            // 首先验证呼号与频率输入是否合法
-            if (!(LogDataValidatorTools.ValidateCallSign(CallSignInput.Text, out string errorMessage)))
-                MessageBox.Show("呼号输入有误：" + errorMessage, "输入错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            if(LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim()))
             {
-                if(LogDataValidatorTools.IsValidAmateurFrequency(FrequencyInput.Text))
-                {
-                    // 呼号与频率均合法，执行保存日志操作
+                
 
-                }
+
+
+
+
             }
 
         }
