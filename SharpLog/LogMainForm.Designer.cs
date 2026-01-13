@@ -154,7 +154,7 @@
             // SetStationInformation
             // 
             SetStationInformation.Name = "SetStationInformation";
-            SetStationInformation.Size = new Size(270, 34);
+            SetStationInformation.Size = new Size(218, 34);
             SetStationInformation.Text = "设置台站信息";
             // 
             // toolStripSeparator1
@@ -992,6 +992,7 @@
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
             Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Regular, GraphicsUnit.Point, 134);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             MinimumSize = new Size(1366, 768);
             Name = "LogMainForm";
