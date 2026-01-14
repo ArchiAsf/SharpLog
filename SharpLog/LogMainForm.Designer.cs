@@ -34,7 +34,6 @@
             SetStationInformation = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             HelpBtn = new ToolStripDropDownButton();
-            CallSignLab = new ToolStripLabel();
             LogShowList = new FlowLayoutPanel();
             panel1 = new Panel();
             groupBox13 = new GroupBox();
@@ -104,6 +103,9 @@
             StartTime = new DateTimePicker();
             StartData = new DateTimePicker();
             label1 = new Label();
+            toolStrip2 = new ToolStrip();
+            CallSignLab = new ToolStripLabel();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox13.SuspendLayout();
@@ -129,12 +131,14 @@
             ((System.ComponentModel.ISupportInitialize)RST_T).BeginInit();
             groupBox1.SuspendLayout();
             ModeSelectBox.SuspendLayout();
+            toolStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(30, 30);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { OptionBtn, toolStripSeparator1, HelpBtn, CallSignLab });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { OptionBtn, toolStripSeparator1, HelpBtn });
             toolStrip1.Location = new Point(8, 8);
             toolStrip1.Margin = new Padding(0, 0, 0, 8);
             toolStrip1.Name = "toolStrip1";
@@ -155,7 +159,7 @@
             // SetStationInformation
             // 
             SetStationInformation.Name = "SetStationInformation";
-            SetStationInformation.Size = new Size(270, 36);
+            SetStationInformation.Size = new Size(240, 36);
             SetStationInformation.Text = "设置台站信息";
             // 
             // toolStripSeparator1
@@ -173,17 +177,6 @@
             HelpBtn.Text = " 帮助";
             HelpBtn.Click += HelpBtn_Click;
             // 
-            // CallSignLab
-            // 
-            CallSignLab.Alignment = ToolStripItemAlignment.Right;
-            CallSignLab.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            CallSignLab.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            CallSignLab.Image = (Image)resources.GetObject("CallSignLab.Image");
-            CallSignLab.ImageTransparentColor = Color.Magenta;
-            CallSignLab.Name = "CallSignLab";
-            CallSignLab.Size = new Size(96, 34);
-            CallSignLab.Text = "台站信息";
-            // 
             // LogShowList
             // 
             LogShowList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -193,7 +186,7 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(830, 641);
+            LogShowList.Size = new Size(830, 652);
             LogShowList.TabIndex = 1;
             // 
             // panel1
@@ -212,7 +205,7 @@
             panel1.Margin = new Padding(7, 5, 3, 3);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(20);
-            panel1.Size = new Size(481, 641);
+            panel1.Size = new Size(481, 652);
             panel1.TabIndex = 2;
             // 
             // groupBox13
@@ -985,15 +978,46 @@
             label1.TabIndex = 25;
             label1.Text = "开始时间";
             // 
+            // toolStrip2
+            // 
+            toolStrip2.Dock = DockStyle.Bottom;
+            toolStrip2.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip2.ImageScalingSize = new Size(30, 30);
+            toolStrip2.Items.AddRange(new ToolStripItem[] { CallSignLab });
+            toolStrip2.Location = new Point(8, 723);
+            toolStrip2.Margin = new Padding(0, 8, 0, 0);
+            toolStrip2.Name = "toolStrip2";
+            toolStrip2.Size = new Size(1328, 33);
+            toolStrip2.TabIndex = 3;
+            toolStrip2.Text = "toolStrip2";
+            // 
+            // CallSignLab
+            // 
+            CallSignLab.Alignment = ToolStripItemAlignment.Right;
+            CallSignLab.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            CallSignLab.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            CallSignLab.Image = (Image)resources.GetObject("CallSignLab.Image");
+            CallSignLab.ImageTransparentColor = Color.Magenta;
+            CallSignLab.Name = "CallSignLab";
+            CallSignLab.Size = new Size(96, 28);
+            CallSignLab.Text = "台站信息";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(240, 36);
+            toolStripMenuItem1.Text = "设置台站信息";
+            // 
             // LogMainForm
             // 
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1344, 712);
+            ClientSize = new Size(1344, 764);
             Controls.Add(panel1);
             Controls.Add(LogShowList);
             Controls.Add(toolStrip1);
+            Controls.Add(toolStrip2);
             Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Regular, GraphicsUnit.Point, 134);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
@@ -1039,6 +1063,8 @@
             groupBox1.ResumeLayout(false);
             ModeSelectBox.ResumeLayout(false);
             ModeSelectBox.PerformLayout();
+            toolStrip2.ResumeLayout(false);
+            toolStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1049,7 +1075,6 @@
         private ToolStripDropDownButton OptionBtn;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripDropDownButton HelpBtn;
-        private ToolStripLabel CallSignLab;
         private FlowLayoutPanel LogShowList;
         private Panel panel1;
         private GroupBox groupBox4;
@@ -1120,5 +1145,8 @@
         private Label label11;
         internal FlowLayoutPanel ModeSelectBox;
         private ToolStripMenuItem SetStationInformation;
+        private ToolStrip toolStrip2;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripLabel CallSignLab;
     }
 }
