@@ -196,6 +196,7 @@ namespace SharpLog
         #endregion
 
 
+
         /*
                 /// <summary>
                 /// 获取选择的通讯模式名称
