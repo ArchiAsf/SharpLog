@@ -145,16 +145,17 @@
             // OptionBtn
             // 
             OptionBtn.DropDownItems.AddRange(new ToolStripItem[] { SetStationInformation });
-            OptionBtn.Image = (Image)resources.GetObject("OptionBtn.Image");
+            OptionBtn.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold);
+            OptionBtn.Image = Properties.Resources.shezhi;
             OptionBtn.ImageTransparentColor = Color.Magenta;
             OptionBtn.Name = "OptionBtn";
-            OptionBtn.Size = new Size(94, 34);
-            OptionBtn.Text = "选项";
+            OptionBtn.Size = new Size(108, 34);
+            OptionBtn.Text = " 选项";
             // 
             // SetStationInformation
             // 
             SetStationInformation.Name = "SetStationInformation";
-            SetStationInformation.Size = new Size(218, 34);
+            SetStationInformation.Size = new Size(270, 36);
             SetStationInformation.Text = "设置台站信息";
             // 
             // toolStripSeparator1
@@ -164,11 +165,13 @@
             // 
             // HelpBtn
             // 
-            HelpBtn.Image = (Image)resources.GetObject("HelpBtn.Image");
+            HelpBtn.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold);
+            HelpBtn.Image = Properties.Resources.bangzhu;
             HelpBtn.ImageTransparentColor = Color.Magenta;
             HelpBtn.Name = "HelpBtn";
-            HelpBtn.Size = new Size(94, 34);
-            HelpBtn.Text = "帮助";
+            HelpBtn.Size = new Size(108, 34);
+            HelpBtn.Text = " 帮助";
+            HelpBtn.Click += HelpBtn_Click;
             // 
             // CallSignLab
             // 

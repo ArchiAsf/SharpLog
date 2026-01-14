@@ -233,5 +233,10 @@ namespace SharpLog
 
 
         }
+
+        private void HelpBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
