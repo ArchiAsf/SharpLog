@@ -21,4 +21,5 @@ namespace SharpLog
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }
+
 }

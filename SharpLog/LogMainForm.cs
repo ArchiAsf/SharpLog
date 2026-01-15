@@ -10,6 +10,7 @@ namespace SharpLog
      */
     public partial class LogMainForm : Form
     {
+
         public LogMainForm()
         {
             InitializeComponent();
@@ -21,7 +22,6 @@ namespace SharpLog
 
             BackColor = logMainFormBackColor;
             ForeColor = logMainFormFontColor;
-
 
             // 核心设置：消除堆叠边框线
             LogShowList.BorderStyle = BorderStyle.None; // 去掉默认边框（关键）
@@ -37,8 +37,15 @@ namespace SharpLog
             //RST_T.Visible = false;
             //RRST_T.Visible = false;
 
-
             SetTips(this);
+
+            #endregion
+
+            #region 加载属性配置
+
+
+
+
 
             #endregion
         }
@@ -223,8 +230,8 @@ namespace SharpLog
                 //输入合法，保存日志
 
 
-
-
+                
+                
 
 
 
@@ -234,9 +241,6 @@ namespace SharpLog
 
         }
 
-        private void HelpBtn_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

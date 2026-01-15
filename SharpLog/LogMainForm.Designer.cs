@@ -30,10 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMainForm));
             toolStrip1 = new ToolStrip();
+            toolStripSeparator2 = new ToolStripSeparator();
             OptionBtn = new ToolStripDropDownButton();
             SetStationInformation = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             HelpBtn = new ToolStripDropDownButton();
+            toolStripSeparator3 = new ToolStripSeparator();
+            toolStripSeparator4 = new ToolStripSeparator();
+            TimeShowLabel = new ToolStripLabel();
+            toolStripSeparator5 = new ToolStripSeparator();
             LogShowList = new FlowLayoutPanel();
             panel1 = new Panel();
             groupBox13 = new GroupBox();
@@ -138,13 +143,19 @@
             // 
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(30, 30);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { OptionBtn, toolStripSeparator1, HelpBtn });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripSeparator2, OptionBtn, toolStripSeparator1, HelpBtn, toolStripSeparator3, toolStripSeparator4, TimeShowLabel, toolStripSeparator5 });
             toolStrip1.Location = new Point(8, 8);
             toolStrip1.Margin = new Padding(0, 0, 0, 8);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1328, 39);
+            toolStrip1.Size = new Size(1328, 40);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.ForeColor = SystemColors.ActiveCaption;
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 40);
             // 
             // OptionBtn
             // 
@@ -152,6 +163,7 @@
             OptionBtn.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold);
             OptionBtn.Image = Properties.Resources.shezhi;
             OptionBtn.ImageTransparentColor = Color.Magenta;
+            OptionBtn.Margin = new Padding(3);
             OptionBtn.Name = "OptionBtn";
             OptionBtn.Size = new Size(108, 34);
             OptionBtn.Text = " 选项";
@@ -164,18 +176,48 @@
             // 
             // toolStripSeparator1
             // 
+            toolStripSeparator1.ForeColor = SystemColors.ActiveCaption;
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 39);
+            toolStripSeparator1.Size = new Size(6, 40);
             // 
             // HelpBtn
             // 
             HelpBtn.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold);
             HelpBtn.Image = Properties.Resources.bangzhu;
             HelpBtn.ImageTransparentColor = Color.Magenta;
+            HelpBtn.Margin = new Padding(3);
             HelpBtn.Name = "HelpBtn";
             HelpBtn.Size = new Size(108, 34);
             HelpBtn.Text = " 帮助";
-            HelpBtn.Click += HelpBtn_Click;
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.ForeColor = SystemColors.ActiveCaption;
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(6, 40);
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Alignment = ToolStripItemAlignment.Right;
+            toolStripSeparator4.ForeColor = SystemColors.ActiveCaption;
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 40);
+            // 
+            // TimeShowLabel
+            // 
+            TimeShowLabel.Alignment = ToolStripItemAlignment.Right;
+            TimeShowLabel.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            TimeShowLabel.Margin = new Padding(3);
+            TimeShowLabel.Name = "TimeShowLabel";
+            TimeShowLabel.Size = new Size(96, 34);
+            TimeShowLabel.Text = "当前时间";
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Alignment = ToolStripItemAlignment.Right;
+            toolStripSeparator5.ForeColor = SystemColors.ActiveCaption;
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 40);
             // 
             // LogShowList
             // 
@@ -1148,5 +1190,10 @@
         private ToolStrip toolStrip2;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripLabel CallSignLab;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripLabel TimeShowLabel;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }
