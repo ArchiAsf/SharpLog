@@ -13,6 +13,8 @@
   <ItemGroup>
     <None Remove="DB\LogDatabase.db" />
     <None Remove="Icon\MainFormIcon.ico" />
+    <None Remove="Resources\bangzhu.ico" />
+    <None Remove="Resources\shezhi.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +37,12 @@
 
   <ItemGroup>
     <Resource Include="Icon\MainFormIcon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\bangzhu.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\shezhi.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -171,7 +171,7 @@
             // SetStationInformation
             // 
             SetStationInformation.Name = "SetStationInformation";
-            SetStationInformation.Size = new Size(240, 36);
+            SetStationInformation.Size = new Size(270, 36);
             SetStationInformation.Text = "设置台站信息";
             // 
             // toolStripSeparator1
