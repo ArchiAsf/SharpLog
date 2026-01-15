@@ -39,8 +39,7 @@
             toolStripSeparator4 = new ToolStripSeparator();
             TimeShowLabel = new ToolStripLabel();
             toolStripSeparator5 = new ToolStripSeparator();
-            LogShowList = new FlowLayoutPanel();
-            panel1 = new Panel();
+            LogShowList = new DoubleBufferedFlowLayoutPanel();
             groupBox13 = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             IsRelayStation = new CheckBox();
@@ -86,7 +85,7 @@
             FrequencyInput = new ComboBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
-            ModeSelectBox = new FlowLayoutPanel();
+            ModeSelectBox = new DoubleBufferedFlowLayoutPanel();
             FmMode = new RadioButton();
             AMMode = new RadioButton();
             SSBMode = new RadioButton();
@@ -111,8 +110,8 @@
             toolStrip2 = new ToolStrip();
             CallSignLab = new ToolStripLabel();
             toolStripMenuItem1 = new ToolStripMenuItem();
+            panel1 = new DoubleBufferedPanel();
             toolStrip1.SuspendLayout();
-            panel1.SuspendLayout();
             groupBox13.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -137,6 +136,7 @@
             groupBox1.SuspendLayout();
             ModeSelectBox.SuspendLayout();
             toolStrip2.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
@@ -171,7 +171,7 @@
             // SetStationInformation
             // 
             SetStationInformation.Name = "SetStationInformation";
-            SetStationInformation.Size = new Size(270, 36);
+            SetStationInformation.Size = new Size(240, 36);
             SetStationInformation.Text = "设置台站信息";
             // 
             // toolStripSeparator1
@@ -230,25 +230,6 @@
             LogShowList.Padding = new Padding(3);
             LogShowList.Size = new Size(830, 652);
             LogShowList.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panel1.AutoScroll = true;
-            panel1.AutoScrollMargin = new Size(0, 20);
-            panel1.Controls.Add(groupBox13);
-            panel1.Controls.Add(groupBox5);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(SaveLogBtn);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(groupBox4);
-            panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
-            panel1.Location = new Point(855, 60);
-            panel1.Margin = new Padding(7, 5, 3, 3);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(20);
-            panel1.Size = new Size(481, 652);
-            panel1.TabIndex = 2;
             // 
             // groupBox13
             // 
@@ -1050,6 +1031,25 @@
             toolStripMenuItem1.Size = new Size(240, 36);
             toolStripMenuItem1.Text = "设置台站信息";
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panel1.AutoScroll = true;
+            panel1.AutoScrollMargin = new Size(0, 20);
+            panel1.Controls.Add(groupBox13);
+            panel1.Controls.Add(groupBox5);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(SaveLogBtn);
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(groupBox4);
+            panel1.Font = new Font("Microsoft YaHei UI", 10.5F, FontStyle.Bold, GraphicsUnit.Point, 134);
+            panel1.Location = new Point(855, 60);
+            panel1.Margin = new Padding(7, 5, 3, 3);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(20);
+            panel1.Size = new Size(481, 652);
+            panel1.TabIndex = 2;
+            // 
             // LogMainForm
             // 
             AutoScaleDimensions = new SizeF(13F, 28F);
@@ -1070,8 +1070,6 @@
             Text = "SharpLog";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             groupBox13.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -1107,6 +1105,8 @@
             ModeSelectBox.PerformLayout();
             toolStrip2.ResumeLayout(false);
             toolStrip2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1117,8 +1117,6 @@
         private ToolStripDropDownButton OptionBtn;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripDropDownButton HelpBtn;
-        private FlowLayoutPanel LogShowList;
-        private Panel panel1;
         private GroupBox groupBox4;
         private GroupBox groupBox3;
         private FlowLayoutPanel RRSTBox;
@@ -1185,7 +1183,6 @@
         private Button SaveLogBtn;
         private Label label9;
         private Label label11;
-        internal FlowLayoutPanel ModeSelectBox;
         private ToolStripMenuItem SetStationInformation;
         private ToolStrip toolStrip2;
         private ToolStripMenuItem toolStripMenuItem1;
@@ -1195,5 +1192,8 @@
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripLabel TimeShowLabel;
         private ToolStripSeparator toolStripSeparator5;
+        private DoubleBufferedFlowLayoutPanel LogShowList;
+        private DoubleBufferedPanel panel1;
+        internal DoubleBufferedFlowLayoutPanel ModeSelectBox;
     }
 }

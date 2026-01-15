@@ -22,6 +22,13 @@ namespace SharpLog
 
             BackColor = logMainFormBackColor;
             ForeColor = logMainFormFontColor;
+            // 优化窗体绘制，减少拖动时出现的白色边框与闪烁
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
+            UpdateStyles();
+
+            // 递归设置已存在控件的双缓冲（某些控件如 FlowLayoutPanel/GroupBox 需要显式启用）
+            logMainFormStyles.EnableDoubleBufferForChildren(this);
+
 
             // 核心设置：消除堆叠边框线
             LogShowList.BorderStyle = BorderStyle.None; // 去掉默认边框（关键）
