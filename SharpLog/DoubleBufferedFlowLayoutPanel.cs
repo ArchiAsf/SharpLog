@@ -68,6 +68,10 @@ namespace SharpLog
             if (m.Msg == WM_ERASEBKGND)
                 return;
             base.WndProc(ref m);
+
+            //bd2bl 59+107 735 斜拉天线 80w 7:40
+
+            
         }
     }
 }

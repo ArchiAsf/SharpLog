@@ -8,7 +8,8 @@ namespace SharpLog
 {
     /// <summary>
     /// 全局静态参数变量类
-    /// </summary>
+    /// </summary>+
+
     public static class GlobalStaticParameters
     {
         //相对路径（程序运行目录）
@@ -88,7 +89,11 @@ namespace SharpLog
             "144.195MHz",  // 2米 - SSB SSTV
             "144.500MHz",  // 2米 - FM常规通联
             "145.800MHz"   // 2米 - ISS卫星SSTV下行
+
+
         };
+
+        //
 
         // FT8常用热门频点
         readonly public static string[] Ft8CommonFrequencies = new string[]
