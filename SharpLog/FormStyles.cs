@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace SharpLog
 {
-    internal class LogMainFormStyles
+    internal class FormStyles
     {
         // 通过反射启用控件的 DoubleBuffered 属性（该属性通常为受保护），用于在运行时
         // 强制把普通控件也切换到双缓冲模式，从而减少重绘时的闪烁或白色残影。
@@ -144,26 +144,28 @@ namespace SharpLog
                     toolStrip.Renderer = new NoBorderToolStripRenderer();
                     toolStrip.BackColor = panelBackColor;
                     toolStrip.ForeColor = labelTextColor;
+
                 }
 
-                //设置GroupBox的样式
-                if (ctrl is GroupBox groupBox)
-                {
-                    groupBox.ForeColor = labelTextColor;
-                }
+                    //设置GroupBo.MouseUp += Btn_MouseUp;         x的样式
+                    if (ctrl is GroupBox groupBox)
+                    {
+                        groupBox.ForeColor = labelTextColor;
+                    }
 
-                //设置下拉列表的样式
-                if (ctrl is ComboBox comboBox)
-                {
-                    comboBox.BackColor = normalTextBoxTextColor;
-                }
+                    //设置下拉列表的样式
+                    if (ctrl is ComboBox comboBox)
+                    {
+                        comboBox.BackColor = normalTextBoxTextColor;
+                    }
 
 
-                // 递归处理嵌套控件（Panel/GroupBox里的控件）
-                if (ctrl.HasChildren)
-                {
-                    SetAllControlsStyle(ctrl);
-                }
+                    // 递归处理嵌套控件（Panel/GroupBox里的控件）
+                    if (ctrl.HasChildren)
+                    {
+                        SetAllControlsStyle(ctrl);
+                    }
+                
             }
         }
 

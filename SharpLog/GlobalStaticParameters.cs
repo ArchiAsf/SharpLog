@@ -14,6 +14,7 @@ namespace SharpLog
     {
         //相对路径（程序运行目录）
         static public readonly string RelativePath = AppDomain.CurrentDomain.BaseDirectory;
+        
 
 
         #region 设定一些要用到的颜色

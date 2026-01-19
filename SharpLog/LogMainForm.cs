@@ -11,14 +11,17 @@ namespace SharpLog
     public partial class LogMainForm : Form
     {
 
+        private static UserData staUserdata = new UserData();
+
         public LogMainForm()
         {
             InitializeComponent();
 
             #region 设置窗体的一些基础样式以及属性
 
-            LogMainFormStyles logMainFormStyles = new LogMainFormStyles();
+            FormStyles logMainFormStyles = new FormStyles();
             logMainFormStyles.SetAllControlsStyle(this);
+
 
             BackColor = logMainFormBackColor;
             ForeColor = logMainFormFontColor;
@@ -50,9 +53,7 @@ namespace SharpLog
 
             #region 加载属性配置
 
-
-
-
+            ChangeCallSignLab(CallSignLab);
 
             #endregion
         }
@@ -237,8 +238,8 @@ namespace SharpLog
                 //输入合法，保存日志
 
 
-                
-                
+
+
 
 
 
@@ -247,7 +248,31 @@ namespace SharpLog
 
 
         }
+        /// <summary>
+        /// 打开设置站点信息窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SetStationInformation_Click(object sender, EventArgs e)
+        {
+            UserDataForm userDataForm = new UserDataForm();
+            userDataForm.ShowDialog();
+            ChangeCallSignLab(CallSignLab);
+        }
 
+        /// <summary>
+        /// 更新呼号标签
+        /// </summary>
+        public static void ChangeCallSignLab(ToolStripLabel CallSignLab)
+        {
+            if (File.Exists(Path.Combine(RelativePath, "UserData.json")))
+            {
+                staUserdata = JSONTools.JSONLoad<UserData>(Path.Combine(RelativePath, "UserData.json"));
 
+                CallSignLab.Text = $"{staUserdata.UserCallSign}   OP：{staUserdata.OPName}";
+                CallSignLab.Font = new Font(CallSignLab.Font.FontFamily, 10, FontStyle.Italic | FontStyle.Bold);
+
+            }
+        }
     }
 }

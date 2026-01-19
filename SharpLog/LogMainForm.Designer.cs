@@ -173,6 +173,7 @@
             SetStationInformation.Name = "SetStationInformation";
             SetStationInformation.Size = new Size(240, 36);
             SetStationInformation.Text = "设置台站信息";
+            SetStationInformation.Click += SetStationInformation_Click;
             // 
             // toolStripSeparator1
             // 
@@ -1186,7 +1187,6 @@
         private ToolStripMenuItem SetStationInformation;
         private ToolStrip toolStrip2;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripLabel CallSignLab;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripSeparator toolStripSeparator4;
@@ -1195,5 +1195,6 @@
         private DoubleBufferedFlowLayoutPanel LogShowList;
         private DoubleBufferedPanel panel1;
         internal DoubleBufferedFlowLayoutPanel ModeSelectBox;
+        public ToolStripLabel CallSignLab;
     }
 }
