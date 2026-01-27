@@ -104,10 +104,10 @@
             label3 = new Label();
             EndTime = new DateTimePicker();
             EndData = new DateTimePicker();
-            label2 = new Label();
+            EndTimeChangeLabel = new Label();
             StartTime = new DateTimePicker();
             StartData = new DateTimePicker();
-            label1 = new Label();
+            StartTimeChangeLabel = new Label();
             toolStrip2 = new ToolStrip();
             CallSignLab = new ToolStripLabel();
             toolStripMenuItem1 = new ToolStripMenuItem();
@@ -565,10 +565,10 @@
             groupBox4.Controls.Add(label3);
             groupBox4.Controls.Add(EndTime);
             groupBox4.Controls.Add(EndData);
-            groupBox4.Controls.Add(label2);
+            groupBox4.Controls.Add(EndTimeChangeLabel);
             groupBox4.Controls.Add(StartTime);
             groupBox4.Controls.Add(StartData);
-            groupBox4.Controls.Add(label1);
+            groupBox4.Controls.Add(StartTimeChangeLabel);
             groupBox4.Dock = DockStyle.Top;
             groupBox4.Location = new Point(20, 20);
             groupBox4.Margin = new Padding(3, 3, 3, 20);
@@ -967,14 +967,15 @@
             EndData.Size = new Size(156, 34);
             EndData.TabIndex = 29;
             // 
-            // label2
+            // EndTimeChangeLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(35, 90);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 28);
-            label2.TabIndex = 26;
-            label2.Text = "结束时间";
+            EndTimeChangeLabel.AutoSize = true;
+            EndTimeChangeLabel.Location = new Point(35, 90);
+            EndTimeChangeLabel.Name = "EndTimeChangeLabel";
+            EndTimeChangeLabel.Size = new Size(96, 28);
+            EndTimeChangeLabel.TabIndex = 26;
+            EndTimeChangeLabel.Text = "结束时间";
+            EndTimeChangeLabel.Click += EndTimeChangeLabel_Click;
             // 
             // StartTime
             // 
@@ -996,14 +997,15 @@
             StartData.Size = new Size(156, 34);
             StartData.TabIndex = 27;
             // 
-            // label1
+            // StartTimeChangeLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(35, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(96, 28);
-            label1.TabIndex = 25;
-            label1.Text = "开始时间";
+            StartTimeChangeLabel.AutoSize = true;
+            StartTimeChangeLabel.Location = new Point(35, 42);
+            StartTimeChangeLabel.Name = "StartTimeChangeLabel";
+            StartTimeChangeLabel.Size = new Size(96, 28);
+            StartTimeChangeLabel.TabIndex = 25;
+            StartTimeChangeLabel.Text = "开始时间";
+            StartTimeChangeLabel.Click += StartTimeChangeLabel_Click;
             // 
             // toolStrip2
             // 
@@ -1159,10 +1161,10 @@
         private Label label3;
         private DateTimePicker EndTime;
         private DateTimePicker EndData;
-        private Label label2;
+        private Label EndTimeChangeLabel;
         private DateTimePicker StartTime;
         private DateTimePicker StartData;
-        private Label label1;
+        private Label StartTimeChangeLabel;
         private GroupBox groupBox5;
         private GroupBox groupBox6;
         private TextBox QTHInPut;

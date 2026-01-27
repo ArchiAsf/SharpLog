@@ -50,18 +50,161 @@ namespace SharpLog
 
             //启动UTC时间显示定时器
             UtcTimer.Start();
-            TimeShowLabel.Text = TimeUpper();
+            TimeShowLabel.Text = ShowTimeUpper();
+            //更新开始与结束时间初始值
+            SetStart_EndTimerInitialValue();
 
             //设置提示信息
             SetTips(this);
 
             //加载属性配置
             ChangeCallSignLab(CallSignLab);
+        }
+        /// <summary>
+        /// 保存日志按钮点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveLogBtn_Click(object sender, EventArgs e)
+        {
+            //判定输入合法性
+            //包括呼号合法性、频率合法性、模式选择、RST填写合法性、RRST填写合法性等
+            //全部合法则保存日志，否则弹出提示框提示用户修改错误信息
+            //呼号、频率、模式、RST、RRST为必须填写项，其构成了日志的必填核心内容，其他信息均为可选填写项
+            if (LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(), ModeSelectBox, RSTBox, RRSTBox))
+            {
+                //输入合法，保存日志
 
 
+
+
+
+
+
+
+            }
 
 
         }
+
+
+        #region 时间操作与更新
+
+        /// <summary>
+        /// 定时器刷新时间显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UtctTimer_Tick(object sender, EventArgs e)
+        {
+            TimeShowLabel.Text = ShowTimeUpper();
+        }
+        /// <summary>
+        /// 设置开始时间和结束时间的初始值
+        /// </summary>
+        private void SetStart_EndTimerInitialValue()
+        {
+            if (TimeModeIsUtc)
+            {
+                StartData.Value = DateTime.UtcNow;
+                StartTime.Value = DateTime.UtcNow;
+                EndData.Value = DateTime.UtcNow;
+                EndTime.Value = DateTime.UtcNow;
+            }
+            else
+            {
+                StartData.Value = DateTime.Now;
+                StartTime.Value = DateTime.Now;
+                EndData.Value = DateTime.Now;
+                EndTime.Value = DateTime.Now;
+            }
+        }
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        /// <returns></returns>
+        public string ShowTimeUpper()
+        {
+            if (TimeModeIsUtc)
+            {
+                return ShowNowTimer.UtcTimeString_();
+            }
+            else
+            {
+                return ShowNowTimer.LocalTimeString_();
+            }
+        }
+        /// <summary>
+        /// 点击更改时间显示模式（UTC/本地时间）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TimeShowLabel_Click(object sender, EventArgs e)
+        {
+            if (TimeModeIsUtc)
+            {
+                TimeShowLabel.Text = ShowNowTimer.UtcTimeString_();
+                TimeModeIsUtc = false;
+            }
+            else
+            {
+                TimeShowLabel.Text = ShowNowTimer.LocalTimeString_();
+                TimeModeIsUtc = true;
+            }
+        }
+
+        /// <summary>
+        /// 更新开始时间的显示
+        /// </summary>
+        public void SavelogStartTimeUpper()
+        {
+            if (!TimeModeIsUtc)
+            {
+                StartData.Value = DateTime.UtcNow;
+                StartTime.Value = DateTime.UtcNow;
+            }
+            else
+            {
+                StartData.Value = DateTime.Now;
+                StartTime.Value = DateTime.Now;
+            }
+        }
+        /// <summary>
+        /// 更新结束时间的显示
+        /// </summary>
+        public void SavelogEndTimeUpper()
+        {
+            if (!TimeModeIsUtc)
+            {
+                EndData.Value = DateTime.UtcNow;
+                EndTime.Value = DateTime.UtcNow;
+            }
+            else
+            {
+                EndData.Value = DateTime.Now;
+                EndTime.Value = DateTime.Now;
+            }
+        }
+        /// <summary>
+        /// 点击“开始时间”标签，更新开始时间为当前时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StartTimeChangeLabel_Click(object sender, EventArgs e)
+        {
+            SavelogStartTimeUpper();
+        }
+        /// <summary>
+        /// 点击“结束时间”标签，更新结束时间为当前时间
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EndTimeChangeLabel_Click(object sender, EventArgs e)
+        {
+            SavelogEndTimeUpper();
+        }
+        #endregion
 
         #region 设定点击不同模式时，频率下拉框的常用频率选项
 
@@ -226,33 +369,6 @@ namespace SharpLog
             }
         }
 
-
-        /// <summary>
-        /// 保存日志按钮点击事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SaveLogBtn_Click(object sender, EventArgs e)
-        {
-            //判定输入合法性
-            //包括呼号合法性、频率合法性、模式选择、RST填写合法性、RRST填写合法性等
-            //全部合法则保存日志，否则弹出提示框提示用户修改错误信息
-            //呼号、频率、模式、RST、RRST为必须填写项，其构成了日志的必填核心内容，其他信息均为可选填写项
-            if (LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(), ModeSelectBox, RSTBox, RRSTBox))
-            {
-                //输入合法，保存日志
-
-
-
-
-
-
-
-
-            }
-
-
-        }
         /// <summary>
         /// 打开设置站点信息窗体
         /// </summary>
@@ -277,50 +393,6 @@ namespace SharpLog
                 CallSignLab.Text = $"{staUserdata.UserCallSign}   OP：{staUserdata.OPName}";
                 CallSignLab.Font = new Font(CallSignLab.Font.FontFamily, 10, FontStyle.Italic | FontStyle.Bold);
 
-            }
-        }
-
-        /// <summary>
-        /// 定时器刷新时间显示
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UtctTimer_Tick(object sender, EventArgs e)
-        {
-            TimeShowLabel.Text = TimeUpper();
-        }
-        /// <summary>
-        /// 更新时间
-        /// </summary>
-        /// <returns></returns>
-        public string TimeUpper()
-
-        {
-            if (TimeModeIsUtc)
-            {
-                return ShowNowTimer.UtcTimeString_();
-            }
-            else
-            {
-                return ShowNowTimer.LocalTimeString_();
-            }
-        }
-        /// <summary>
-        /// 点击更改时间显示模式（UTC/本地时间）
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TimeShowLabel_Click(object sender, EventArgs e)
-        {
-            if (TimeModeIsUtc)
-            {
-                TimeShowLabel.Text = ShowNowTimer.UtcTimeString_();
-                TimeModeIsUtc = false;
-            }
-            else
-            {
-                TimeShowLabel.Text = ShowNowTimer.LocalTimeString_();
-                TimeModeIsUtc = true;
             }
         }
 
