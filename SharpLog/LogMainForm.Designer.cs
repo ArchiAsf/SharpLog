@@ -87,7 +87,7 @@
             label5 = new Label();
             groupBox1 = new GroupBox();
             ModeSelectBox = new DoubleBufferedFlowLayoutPanel();
-            FmMode = new RadioButton();
+            FMMode = new RadioButton();
             AMMode = new RadioButton();
             SSBMode = new RadioButton();
             CWMode = new RadioButton();
@@ -232,7 +232,7 @@
             LogShowList.Margin = new Padding(3, 5, 7, 3);
             LogShowList.Name = "LogShowList";
             LogShowList.Padding = new Padding(3);
-            LogShowList.Size = new Size(830, 652);
+            LogShowList.Size = new Size(830, 650);
             LogShowList.TabIndex = 1;
             // 
             // groupBox13
@@ -536,7 +536,7 @@
             SaveLogBtn.Name = "SaveLogBtn";
             SaveLogBtn.Size = new Size(415, 50);
             SaveLogBtn.TabIndex = 28;
-            SaveLogBtn.Text = "添 加 纪 录";
+            SaveLogBtn.Text = "添 加 记 录";
             SaveLogBtn.UseVisualStyleBackColor = true;
             SaveLogBtn.Click += SaveLogBtn_Click;
             // 
@@ -757,7 +757,7 @@
             // 
             // ModeSelectBox
             // 
-            ModeSelectBox.Controls.Add(FmMode);
+            ModeSelectBox.Controls.Add(FMMode);
             ModeSelectBox.Controls.Add(AMMode);
             ModeSelectBox.Controls.Add(SSBMode);
             ModeSelectBox.Controls.Add(CWMode);
@@ -777,16 +777,16 @@
             ModeSelectBox.Size = new Size(385, 207);
             ModeSelectBox.TabIndex = 18;
             // 
-            // FmMode
+            // FMMode
             // 
-            FmMode.AutoSize = true;
-            FmMode.Location = new Point(13, 13);
-            FmMode.Name = "FmMode";
-            FmMode.Size = new Size(71, 32);
-            FmMode.TabIndex = 17;
-            FmMode.TabStop = true;
-            FmMode.Text = "FM";
-            FmMode.UseVisualStyleBackColor = true;
+            FMMode.AutoSize = true;
+            FMMode.Location = new Point(13, 13);
+            FMMode.Name = "FMMode";
+            FMMode.Size = new Size(71, 32);
+            FMMode.TabIndex = 17;
+            FMMode.TabStop = true;
+            FMMode.Text = "FM";
+            FMMode.UseVisualStyleBackColor = true;
             // 
             // AMMode
             // 
@@ -1144,7 +1144,7 @@
         private ComboBox FrequencyInput;
         private Label label5;
         private GroupBox groupBox1;
-        private RadioButton FmMode;
+        private RadioButton FMMode;
         private RadioButton AMMode;
         private RadioButton SSBMode;
         private RadioButton FT8Mode;

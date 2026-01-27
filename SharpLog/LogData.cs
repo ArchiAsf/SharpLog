@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SharpLog
 {/// <summary>
@@ -10,6 +12,7 @@ namespace SharpLog
  /// 用于记录无线电通联的详细信息
  /// </summary>
     [Table("LogTable")] // 显式指定映射的数据库表名，避免EF自动复数化
+    [Index(nameof(StartTime), IsUnique = true)]
     public class LogTable
     {
         /// <summary>
@@ -32,6 +35,7 @@ namespace SharpLog
         /// <summary>
         /// 对方呼号（电台标识）
         /// </summary>
+        [Key] // 标记为主键
         [Column("CallSign")]
         [Required(ErrorMessage = "对方呼号不能为空")]
         public string CallSign { get; set; } = string.Empty;

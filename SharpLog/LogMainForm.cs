@@ -82,6 +82,7 @@ namespace SharpLog
 
 
 
+
             }
 
 
@@ -322,7 +323,7 @@ namespace SharpLog
             //MSK144（MSK144 数字模式）
             */
 
-            Tip.SetToolTip(LMF.FmMode, "FM（调频模式）");
+            Tip.SetToolTip(LMF.FMMode, "FM（调频模式）");
             Tip.SetToolTip(LMF.SSBMode, "SSB（单边带模式，包含上边带（USB）与下边带（LSB））");
             Tip.SetToolTip(LMF.CWMode, "CW（等幅电报模式）");
             Tip.SetToolTip(LMF.SSTVMode, "SSTV（慢扫描电视模式）");
