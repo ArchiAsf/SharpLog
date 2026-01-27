@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogMainForm));
             toolStrip1 = new ToolStrip();
             toolStripSeparator2 = new ToolStripSeparator();
@@ -111,6 +112,7 @@
             CallSignLab = new ToolStripLabel();
             toolStripMenuItem1 = new ToolStripMenuItem();
             panel1 = new DoubleBufferedPanel();
+            UtcTimer = new System.Windows.Forms.Timer(components);
             toolStrip1.SuspendLayout();
             groupBox13.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -212,6 +214,7 @@
             TimeShowLabel.Name = "TimeShowLabel";
             TimeShowLabel.Size = new Size(96, 34);
             TimeShowLabel.Text = "当前时间";
+            TimeShowLabel.Click += TimeShowLabel_Click;
             // 
             // toolStripSeparator5
             // 
@@ -1051,6 +1054,11 @@
             panel1.Size = new Size(481, 652);
             panel1.TabIndex = 2;
             // 
+            // UtcTimer
+            // 
+            UtcTimer.Interval = 60000;
+            UtcTimer.Tick += UtctTimer_Tick;
+            // 
             // LogMainForm
             // 
             AutoScaleDimensions = new SizeF(13F, 28F);
@@ -1196,5 +1204,6 @@
         private DoubleBufferedPanel panel1;
         internal DoubleBufferedFlowLayoutPanel ModeSelectBox;
         public ToolStripLabel CallSignLab;
+        public System.Windows.Forms.Timer UtcTimer;
     }
 }

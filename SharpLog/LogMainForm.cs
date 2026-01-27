@@ -46,16 +46,21 @@ namespace SharpLog
             RRST_T.Text = "";
             //RST_T.Visible = false;
             //RRST_T.Visible = false;
+            #endregion
 
+            //启动UTC时间显示定时器
+            UtcTimer.Start();
+            TimeShowLabel.Text = TimeUpper();
+
+            //设置提示信息
             SetTips(this);
 
-            #endregion
-
-            #region 加载属性配置
-
+            //加载属性配置
             ChangeCallSignLab(CallSignLab);
 
-            #endregion
+
+
+
         }
 
         #region 设定点击不同模式时，频率下拉框的常用频率选项
@@ -274,5 +279,51 @@ namespace SharpLog
 
             }
         }
+
+        /// <summary>
+        /// 定时器刷新时间显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UtctTimer_Tick(object sender, EventArgs e)
+        {
+            TimeShowLabel.Text = TimeUpper();
+        }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        /// <returns></returns>
+        public string TimeUpper()
+
+        {
+            if (TimeModeIsUtc)
+            {
+                return ShowNowTimer.UtcTimeString_();
+            }
+            else
+            {
+                return ShowNowTimer.LocalTimeString_();
+            }
+        }
+        /// <summary>
+        /// 点击更改时间显示模式（UTC/本地时间）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TimeShowLabel_Click(object sender, EventArgs e)
+        {
+            if (TimeModeIsUtc)
+            {
+                TimeShowLabel.Text = ShowNowTimer.UtcTimeString_();
+                TimeModeIsUtc = false;
+            }
+            else
+            {
+                TimeShowLabel.Text = ShowNowTimer.LocalTimeString_();
+                TimeModeIsUtc = true;
+            }
+        }
+
+
     }
 }

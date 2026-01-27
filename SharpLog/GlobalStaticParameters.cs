@@ -1,5 +1,5 @@
 ﻿global using static SharpLog.GlobalStaticParameters;
-
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -188,6 +188,9 @@ namespace SharpLog
         }.AsReadOnly();
 
         #endregion
+
+
+        public static bool TimeModeIsUtc = true; // 默认使用UTC时间
 
     }
 }
