@@ -536,7 +536,7 @@
             SaveLogBtn.Name = "SaveLogBtn";
             SaveLogBtn.Size = new Size(415, 50);
             SaveLogBtn.TabIndex = 28;
-            SaveLogBtn.Text = "添 加 纪 录";
+            SaveLogBtn.Text = "添 加 记 录";
             SaveLogBtn.UseVisualStyleBackColor = true;
             SaveLogBtn.Click += SaveLogBtn_Click;
             // 
