@@ -57,52 +57,36 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Install WiX Toolset
+      shell: pwsh
       run: |
-        dotnet tool install --global WixToolset.Heat
-        dotnet tool install --global WixToolset.Candle
-        dotnet tool install --global WixToolset.Light
+        # 使用 Chocolatey 安装 WiX Toolset
+        choco install wixtoolset -y
+        
+        # 刷新环境变量
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+        
+        # 验证安装
+        candle.exe -? | Select-Object -First 5
 
     - name: Restore and Build
+      shell: pwsh
       run: |
         dotnet restore
         dotnet build SharpLog/SharpLog.csproj --configuration Release
 
-    - name: Create WiX source file
+    - name: Publish Application
       shell: pwsh
       run: |
-        $publishDir = "SharpLog/bin/Release/net10.0-windows"
-        $wxsFile = "SharpLog/Installer/Product.wxs"
-        New-Item -ItemType Directory -Force -Path "SharpLog/Installer" | Out-Null
-        
-        if (Test-Path $publishDir) {
-          Write-Output "Found build directory: $publishDir"
-        } else {
-          Write-Output "Build directory not found: $publishDir"
-        }
+        dotnet publish SharpLog/SharpLog.csproj -c Release -o "publish" --self-contained=true -p:PublishSingleFile=true
 
-    - name: Compile WiX source
-      shell: pwsh
-      run: |
-        $publishDir = "SharpLog/bin/Release/net10.0-windows"
-        # WiX 编译步骤（可选，先跳过避免报错）
-        Write-Output "WiX compilation step skipped for now"
-      continue-on-error: true
-
-    - name: Link MSI installer
-      shell: pwsh
-      run: |
-        # MSI 链接步骤（可选）
-        Write-Output "MSI linking step skipped for now"
-      continue-on-error: true
-
-    - name: Create installer package (Manual approach)
-      if: always()
+    - name: Create installer package
       shell: pwsh
       run: |
         $version = Select-String -Path "SharpLog/SharpLog.csproj" -Pattern '<Version>(.*?)</Version>' | % {$_.Matches[0].Groups[1].Value}
         if (-not $version) { $version = "1.0.0" }
         
-        $sourceDir = "SharpLog/bin/Release/net10.0-windows"
+        # 使用发布输出目录
+        $sourceDir = "publish"
         $packageDir = "SharpLog-$version-portable"
         
         # 检查源目录是否存在
@@ -112,29 +96,32 @@ jobs:
           
           # 创建压缩包
           Compress-Archive -Path "$packageDir" -DestinationPath "SharpLog-$version-portable.zip" -Force
-          Write-Output "ZIP package created successfully: SharpLog-$version-portable.zip"
+          Write-Output "✓ ZIP package created: SharpLog-$version-portable.zip"
+          
+          # 列出包内容
+          Write-Output "Package contents:"
+          Get-ChildItem "$packageDir" -Recurse | Select-Object -ExpandProperty FullName
         } else {
-          Write-Output "Warning: Build output directory not found: $sourceDir"
+          Write-Output "❌ Error: Publish directory not found: $sourceDir"
           Write-Output "Available directories:"
-          Get-ChildItem -Recurse -Directory | Select-Object -ExpandProperty FullName
+          Get-ChildItem -Recurse -Directory -Depth 2 | Select-Object -ExpandProperty FullName | head -20
+          exit 1
         }
 
     - name: Upload installer artifacts
       uses: actions/upload-artifact@v4
       with:
         name: SharpLog-Installers
-        path: |
-          SharpLog/bin/Release/SharpLog-installer.msi
-          SharpLog-*-portable.zip
+        path: SharpLog-*-portable.zip
         retention-days: 30
-        if-no-files-found: warn
+        if-no-files-found: error
 
-    - name: Create Release (only on master branch with tags)
+    - name: Create GitHub Release
       if: github.ref == 'refs/heads/master' && startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          SharpLog/bin/Release/SharpLog-installer.msi
-          SharpLog-*-portable.zip
+        files: SharpLog-*-portable.zip
+        draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

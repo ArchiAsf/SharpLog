@@ -47,17 +47,21 @@ SharpLog 项目配置了自动化的 GitHub Actions 工作流，包括以下功�
 **步骤**：
 1. 检出代码
 2. 安装 .NET SDK
-3. 安装 WiX Toolset（用于 MSI 生成）
+3. 安装 WiX Toolset（通过 Chocolatey）
 4. 构建项目
-5. 生成 WiX 源文件（自动扫描文件）
-6. 编译 MSI 安装包
-7. 创建便携式 ZIP 包
-8. 上传安装包
+5. 发布应用（Release 配置）
+6. 创建便携式 ZIP 包
+7. 上传 artifacts
+8. 创建 GitHub Release（仅在标签发布时）
 
 **输出**：
 - `SharpLog-Installers` artifact，包含：
-  - `SharpLog-installer.msi` - Windows 安装包
-  - `SharpLog-*.zip` - 便携式版本
+  - `SharpLog-x.x.x-portable.zip` - 便携式版本（无需安装，解压即用）
+
+**优点**：
+- ✅ 便携式设计 - 无需复杂的 MSI 安装程序
+- ✅ 自包含（self-contained）- 包含所有必需的 .NET 运行时
+- ✅ 简单易用 - 解压后直接运行
 
 ### 3. 自动发布（可选）
 
@@ -75,26 +79,14 @@ dotnet restore
 dotnet build --configuration Release /p:EnforceCodeStyleInBuild=true /p:EnableNETAnalyzers=true
 ```
 
-### 本地生成 MSI（可选）
-
-如果需要本地测试 MSI 生成，首先安装 WiX Toolset：
+### 本地发布便携版本
 
 ```bash
-# 使用 dotnet tool
-dotnet tool install --global WixToolset.Heat
-dotnet tool install --global WixToolset.Candle
-dotnet tool install --global WixToolset.Light
+# 构建并发布应用
+dotnet publish SharpLog/SharpLog.csproj -c Release -o "publish" --self-contained=true -p:PublishSingleFile=true
 
-# 或使用 chocolatey（Windows）
-choco install wixtoolset
-```
-
-然后编译：
-
-```bash
-candle.exe -d PublishDir="SharpLog\bin\Release\net10.0-windows" SharpLog\Installer\Product.wxs -o SharpLog\Installer\
-
-light.exe -out SharpLog\bin\Release\SharpLog-installer.msi SharpLog\Installer\Product.wixobj
+# 创建 ZIP 包
+Compress-Archive -Path "publish" -DestinationPath "SharpLog-portable.zip" -Force
 ```
 
 ## 项目设置
@@ -102,7 +94,7 @@ light.exe -out SharpLog\bin\Release\SharpLog-installer.msi SharpLog\Installer\Pr
 ### csproj 配置
 
 已在 `SharpLog.csproj` 中添加：
-- `<Version>` - 版本号（影响 MSI 和 ZIP 包名）
+- `<Version>` - 版本号（影响 ZIP 包名）
 - `<EnableNETAnalyzers>true</EnableNETAnalyzers>` - 启用 .NET 分析器
 - `<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>` - 强制检查代码风格
 
@@ -146,7 +138,8 @@ if: github.ref == 'refs/heads/master'
 
 可考虑的改进：
 - [ ] 集成代码覆盖率检查（Codecov）
-- [ ] 自动发布到 GitHub Releases
+- [ ] 自动发布到 GitHub Releases（已配置标签触发）
 - [ ] 代码签名（使用证书签署 EXE）
 - [ ] 国际化构建（多语言支持）
 - [ ] 性能测试集成
+- [ ] 单元测试集成
