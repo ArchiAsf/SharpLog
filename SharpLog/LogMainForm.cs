@@ -102,6 +102,7 @@ namespace SharpLog
                 };
 
                 DBHelper.AddDBData_Async<LogTable>(log);
+
             }
         }
 
