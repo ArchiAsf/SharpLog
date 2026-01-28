@@ -1,4 +1,4 @@
-name: Build, Lint and Release
+name: Build and Release
 
 on:
   push:
@@ -10,9 +10,9 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 jobs:
-  lint-and-build:
+  build:
     runs-on: windows-latest
-    name: Code Quality & Build
+    name: Build Project
 
     steps:
     - name: Checkout code
@@ -29,10 +29,6 @@ jobs:
     - name: Build project
       run: dotnet build --configuration Release --no-restore
 
-    - name: Run code analysis (StyleCop)
-      run: dotnet build --configuration Release --no-restore /p:EnforceCodeStyleInBuild=true /p:EnableNETAnalyzers=true
-      continue-on-error: true
-
     - name: Upload build artifacts
       if: success()
       uses: actions/upload-artifact@v4
@@ -44,7 +40,7 @@ jobs:
   create-installer:
     runs-on: windows-latest
     name: Create MSI Installer
-    needs: lint-and-build
+    needs: build
     if: success()
 
     steps:
@@ -59,13 +55,8 @@ jobs:
     - name: Install WiX Toolset
       shell: pwsh
       run: |
-        # 使用 Chocolatey 安装 WiX Toolset
         choco install wixtoolset -y
-        
-        # 刷新环境变量
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        
-        # 验证安装
         candle.exe -? | Select-Object -First 5
 
     - name: Restore and Build
@@ -85,26 +76,16 @@ jobs:
         $version = Select-String -Path "SharpLog/SharpLog.csproj" -Pattern '<Version>(.*?)</Version>' | % {$_.Matches[0].Groups[1].Value}
         if (-not $version) { $version = "1.0.0" }
         
-        # 使用发布输出目录
         $sourceDir = "publish"
         $packageDir = "SharpLog-$version-portable"
         
-        # 检查源目录是否存在
         if (Test-Path $sourceDir) {
           New-Item -ItemType Directory -Force -Path "$packageDir" | Out-Null
           Copy-Item "$sourceDir/*" "$packageDir/" -Recurse -Force
-          
-          # 创建压缩包
           Compress-Archive -Path "$packageDir" -DestinationPath "SharpLog-$version-portable.zip" -Force
           Write-Output "✓ ZIP package created: SharpLog-$version-portable.zip"
-          
-          # 列出包内容
-          Write-Output "Package contents:"
-          Get-ChildItem "$packageDir" -Recurse | Select-Object -ExpandProperty FullName
         } else {
           Write-Output "❌ Error: Publish directory not found: $sourceDir"
-          Write-Output "Available directories:"
-          Get-ChildItem -Recurse -Directory -Depth 2 | Select-Object -ExpandProperty FullName | head -20
           exit 1
         }
 
