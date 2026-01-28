@@ -67,7 +67,7 @@ namespace SharpLog
             // 5. 捕获通用数据操作异常（空值、类型转换等）
             catch (NullReferenceException ex)
             {
-                MessageBox.Show($"操作错误：数据对象为空，请检查输入！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"操作错误：数据对象为空，请检查输入！\r\n错误提示：{ex.Message}", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             // 6. 兜底捕获所有未指定的异常
             catch (Exception ex)

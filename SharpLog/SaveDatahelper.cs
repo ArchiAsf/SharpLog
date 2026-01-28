@@ -23,9 +23,9 @@
         /// <returns>如果是CW模式就返回完整的RST字符串，否则返回RS字符串</returns>
         public static string GetRSTString(string SelectedMode, NumericUpDown R, NumericUpDown S, NumericUpDown T)
         {
-            if (SelectedMode == "CW")
+            if (SelectedMode == "CW" || SelectedMode == "SSTV")
             {
-               return $"{R.Value.ToString()}{S.Value.ToString()}{T.Value.ToString()}";
+                return $"{R.Value.ToString()}{S.Value.ToString()}{T.Value.ToString()}";
             }
             else
             {

@@ -66,7 +66,7 @@ namespace SharpLog
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SaveLogBtn_Click(object sender, EventArgs e)
+        private async void SaveLogBtn_Click(object sender, EventArgs e)
         {
             // 判定输入合法性
             // 包括呼号合法性、频率合法性、模式选择、RST填写合法性、RRST填写合法性等
@@ -101,7 +101,7 @@ namespace SharpLog
                     IsConfirmation = false
                 };
 
-                DBHelper.AddDBData_Async<LogTable>(log);
+                await DBHelper.AddDBData_Async<LogTable>(log);
 
             }
         }
