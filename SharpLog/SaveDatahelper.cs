@@ -8,6 +8,7 @@ namespace SharpLog
     internal static class SaveDatahelper
     {
    
+
         /// <summary>
         /// 获取选择的通讯模式名称
         /// </summary>
