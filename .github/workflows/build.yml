@@ -1,0 +1,127 @@
+name: Build, Lint and Release
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master, dev ]
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  lint-and-build:
+    runs-on: windows-latest
+    name: Code Quality & Build
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run code analysis (StyleCop)
+      run: dotnet build --configuration Release --no-restore /p:EnforceCodeStyleInBuild=true /p:EnableNETAnalyzers=true
+      continue-on-error: true
+
+    - name: Upload build artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: SharpLog-Release
+        path: SharpLog/bin/Release/net10.0-windows/
+        retention-days: 30
+
+  create-installer:
+    runs-on: windows-latest
+    name: Create MSI Installer
+    needs: lint-and-build
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Install WiX Toolset
+      shell: pwsh
+      run: |
+        # 使用 Chocolatey 安装 WiX Toolset
+        choco install wixtoolset -y
+        
+        # 刷新环境变量
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+        
+        # 验证安装
+        candle.exe -? | Select-Object -First 5
+
+    - name: Restore and Build
+      shell: pwsh
+      run: |
+        dotnet restore
+        dotnet build SharpLog/SharpLog.csproj --configuration Release
+
+    - name: Publish Application
+      shell: pwsh
+      run: |
+        dotnet publish SharpLog/SharpLog.csproj -c Release -o "publish" --self-contained=true -p:PublishSingleFile=true
+
+    - name: Create installer package
+      shell: pwsh
+      run: |
+        $version = Select-String -Path "SharpLog/SharpLog.csproj" -Pattern '<Version>(.*?)</Version>' | % {$_.Matches[0].Groups[1].Value}
+        if (-not $version) { $version = "1.0.0" }
+        
+        # 使用发布输出目录
+        $sourceDir = "publish"
+        $packageDir = "SharpLog-$version-portable"
+        
+        # 检查源目录是否存在
+        if (Test-Path $sourceDir) {
+          New-Item -ItemType Directory -Force -Path "$packageDir" | Out-Null
+          Copy-Item "$sourceDir/*" "$packageDir/" -Recurse -Force
+          
+          # 创建压缩包
+          Compress-Archive -Path "$packageDir" -DestinationPath "SharpLog-$version-portable.zip" -Force
+          Write-Output "✓ ZIP package created: SharpLog-$version-portable.zip"
+          
+          # 列出包内容
+          Write-Output "Package contents:"
+          Get-ChildItem "$packageDir" -Recurse | Select-Object -ExpandProperty FullName
+        } else {
+          Write-Output "❌ Error: Publish directory not found: $sourceDir"
+          Write-Output "Available directories:"
+          Get-ChildItem -Recurse -Directory -Depth 2 | Select-Object -ExpandProperty FullName | head -20
+          exit 1
+        }
+
+    - name: Upload installer artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: SharpLog-Installers
+        path: SharpLog-*-portable.zip
+        retention-days: 30
+        if-no-files-found: error
+
+    - name: Create GitHub Release
+      if: github.ref == 'refs/heads/master' && startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: SharpLog-*-portable.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+
+  <?define ProductName = "SharpLog" ?>
+  <?define ProductVersion = "1.0.0" ?>
+  <?define ProductUpgradeCode = "12345678-1234-1234-1234-123456789012" ?>
+  <?define ProductManufacturer = "SharpLog Contributors" ?>
+
+  <Product
+    Id="*"
+    Name="$(var.ProductName)"
+    Language="2052"
+    Version="$(var.ProductVersion)"
+    Manufacturer="$(var.ProductManufacturer)"
+    UpgradeCode="$(var.ProductUpgradeCode)">
+
+    <Package
+      InstallerVersion="200"
+      Compressed="yes"
+      InstallScope="perMachine"
+      Languages="2052"
+      SummaryCodepage="936" />
+
+    <MajorUpgrade
+      DowngradeErrorMessage="已安装更新版本的 $(var.ProductName)。"/>
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="SharpLog 应用程序" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="Database" />
+      <ComponentRef Id="Dependencies" />
+    </Feature>
+
+    <!-- 主程序文件 -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="SharpLog" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="SharpLog" />
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <!-- 主可执行文件 -->
+    <Feature Id="ProductFeature" Title="SharpLog" Level="1">
+      <ComponentRef Id="MainApplication" />
+      <ComponentRef Id="StartMenuShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+
+    <Component Id="MainApplication" Directory="INSTALLFOLDER" Guid="*">
+      <File Id="SharpLogExe" Source="$(var.PublishDir)\SharpLog.exe" KeyPath="yes" />
+      <File Source="$(var.PublishDir)\SharpLog.dll" />
+      <File Source="$(var.PublishDir)\SharpLog.runtimeconfig.json" />
+    </Component>
+
+    <!-- 数据库文件 -->
+    <Component Id="Database" Directory="INSTALLFOLDER" Guid="*">
+      <File Id="DatabaseFile" Source="$(var.PublishDir)\RadioLog.db" />
+    </Component>
+
+    <!-- 依赖库 -->
+    <Component Id="Dependencies" Directory="INSTALLFOLDER" Guid="*">
+      <File Source="$(var.PublishDir)\Microsoft.Data.Sqlite.dll" />
+      <File Source="$(var.PublishDir)\Microsoft.EntityFrameworkCore.dll" />
+      <File Source="$(var.PublishDir)\Microsoft.EntityFrameworkCore.Sqlite.dll" />
+    </Component>
+
+    <!-- 开始菜单快捷方式 -->
+    <Component Id="StartMenuShortcut" Directory="ApplicationProgramsFolder" Guid="*">
+      <Shortcut Id="ApplicationStartMenuShortcut" Name="SharpLog" Description="业余无线电 QSO 日志系统"
+                 Target="[INSTALLFOLDER]SharpLog.exe" WorkingDirectory="INSTALLFOLDER" />
+      <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+      <RegistryValue Root="HKCU" Key="Software\SharpLog" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <!-- 桌面快捷方式 -->
+    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="*">
+      <Shortcut Id="DesktopShortcut" Name="SharpLog" Description="业余无线电 QSO 日志系统"
+                 Target="[INSTALLFOLDER]SharpLog.exe" WorkingDirectory="INSTALLFOLDER" />
+      <RegistryValue Root="HKCU" Key="Software\SharpLog" Name="desktopInstalled" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+  </Product>
+
+</Wix>
