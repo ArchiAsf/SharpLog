@@ -1,0 +1,125 @@
+name: Build, Lint and Release
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master, dev ]
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  lint-and-build:
+    runs-on: windows-latest
+    name: Code Quality & Build
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run code analysis (StyleCop)
+      run: dotnet build --configuration Release --no-restore /p:EnforceCodeStyleInBuild=true /p:EnableNETAnalyzers=true
+      continue-on-error: true
+
+    - name: Upload build artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: SharpLog-Release
+        path: SharpLog/bin/Release/net10.0-windows/
+        retention-days: 30
+
+  create-installer:
+    runs-on: windows-latest
+    name: Create MSI Installer
+    needs: lint-and-build
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Install WiX Toolset
+      run: |
+        dotnet tool install --global WixToolset.Heat
+        dotnet tool install --global WixToolset.Candle
+        dotnet tool install --global WixToolset.Light
+
+    - name: Restore and Build
+      run: |
+        dotnet restore
+        dotnet build SharpLog/SharpLog.csproj --configuration Release
+
+    - name: Create WiX source file
+      run: |
+        $publishDir = "SharpLog\bin\Release\net10.0-windows"
+        $wxsFile = "SharpLog\Installer\Product.wxs"
+        New-Item -ItemType Directory -Force -Path "SharpLog\Installer" | Out-Null
+        
+        # 使用 Heat 生成文件列表
+        heat dir "$publishDir" -o "$($wxsFile.Replace('.wxs', '.generated.wxs'))" -gg -sf -srd -var var.PublishDir
+
+    - name: Compile WiX source
+      run: |
+        $candleExe = (dotnet tool list -g | Select-String "wix" -First 1).Line
+        if ($LASTEXITCODE -eq 0) {
+          candle.exe -d PublishDir="SharpLog\bin\Release\net10.0-windows" SharpLog\Installer\Product.wxs -o SharpLog\Installer\
+        }
+      continue-on-error: true
+
+    - name: Link MSI installer
+      run: |
+        light.exe -out SharpLog\bin\Release\SharpLog-installer.msi SharpLog\Installer\Product.wixobj
+      continue-on-error: true
+
+    - name: Create installer package (Manual approach)
+      if: always()
+      shell: pwsh
+      run: |
+        $version = Select-String -Path "SharpLog/SharpLog.csproj" -Pattern '<Version>(.*?)</Version>' | % {$_.Matches[0].Groups[1].Value}
+        if (-not $version) { $version = "1.0.0" }
+        
+        $sourceDir = "SharpLog\bin\Release\net10.0-windows"
+        $packageDir = "SharpLog-$version-portable"
+        
+        New-Item -ItemType Directory -Force -Path "$packageDir" | Out-Null
+        Copy-Item "$sourceDir\*" "$packageDir\" -Recurse -Force
+        
+        # 创建压缩包
+        Compress-Archive -Path "$packageDir" -DestinationPath "SharpLog-$version-portable.zip" -Force
+
+    - name: Upload installer artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: SharpLog-Installers
+        path: |
+          SharpLog\bin\Release\SharpLog-installer.msi
+          SharpLog-*.zip
+        retention-days: 30
+
+    - name: Create Release (only on master branch with tags)
+      if: github.ref == 'refs/heads/master' && startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          SharpLog\bin\Release\SharpLog-installer.msi
+          SharpLog-*.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
