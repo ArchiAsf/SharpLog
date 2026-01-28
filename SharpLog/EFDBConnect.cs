@@ -12,12 +12,12 @@ namespace SharpLog
     public class EFDBConnect : DbContext
     {
         // 配置LogTable的DbSet
-        public DbSet<LogTable> LogTables { get; set; } = null!;
+        public DbSet<LogTable> LogTable { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // SQLite数据库路径配置
-            string dbPath = Path.Combine(RelativePath, "LogDatabase.db");
+            string dbPath = Path.Combine(RelativePath,"DB", "LogDatabase.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }
@@ -33,11 +33,12 @@ namespace SharpLog
         /// <typeparam name="T">数据对象类型</typeparam>
         /// <param name="data">数据</param>
         /// <returns></returns>
-        public static async Task AddDBData_Async<T>(T data) where T : class
+        public static void AddDBData_Async<T>(T data) where T : class
         {
             using EFDBConnect dbContext = new EFDBConnect();
             dbContext.Set<T>().Add(data);
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
+            //MessageBox.Show(a.ToString());
         }
 
         /// <summary>

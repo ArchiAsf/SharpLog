@@ -35,7 +35,7 @@ namespace SharpLog
         /// <summary>
         /// 对方呼号（电台标识）
         /// </summary>
-        [Key] // 标记为主键
+
         [Column("CallSign")]
         [Required(ErrorMessage = "对方呼号不能为空")]
         public string CallSign { get; set; } = string.Empty;
