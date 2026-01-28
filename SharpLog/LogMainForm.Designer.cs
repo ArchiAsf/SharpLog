@@ -82,6 +82,7 @@
             RST_R = new NumericUpDown();
             RST_S = new NumericUpDown();
             RST_T = new NumericUpDown();
+            numericUpDown1 = new NumericUpDown();
             label4 = new Label();
             FrequencyInput = new ComboBox();
             label5 = new Label();
@@ -135,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)RST_R).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RST_S).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RST_T).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             groupBox1.SuspendLayout();
             ModeSelectBox.SuspendLayout();
             toolStrip2.SuspendLayout();
@@ -672,6 +674,7 @@
             RSTBox.Controls.Add(RST_R);
             RSTBox.Controls.Add(RST_S);
             RSTBox.Controls.Add(RST_T);
+            RSTBox.Controls.Add(numericUpDown1);
             RSTBox.Dock = DockStyle.Fill;
             RSTBox.Location = new Point(3, 30);
             RSTBox.Name = "RSTBox";
@@ -717,6 +720,13 @@
             RST_T.TabIndex = 24;
             RST_T.TextAlign = HorizontalAlignment.Center;
             RST_T.Value = new decimal(new int[] { 9, 0, 0, 0 });
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(3, 43);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(180, 34);
+            numericUpDown1.TabIndex = 25;
             // 
             // label4
             // 
@@ -1111,6 +1121,7 @@
             ((System.ComponentModel.ISupportInitialize)RST_R).EndInit();
             ((System.ComponentModel.ISupportInitialize)RST_S).EndInit();
             ((System.ComponentModel.ISupportInitialize)RST_T).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             groupBox1.ResumeLayout(false);
             ModeSelectBox.ResumeLayout(false);
             ModeSelectBox.PerformLayout();
@@ -1207,5 +1218,6 @@
         internal DoubleBufferedFlowLayoutPanel ModeSelectBox;
         public ToolStripLabel CallSignLab;
         public System.Windows.Forms.Timer UtcTimer;
+        private NumericUpDown numericUpDown1;
     }
 }

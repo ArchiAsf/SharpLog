@@ -195,24 +195,6 @@ namespace SharpLog
 
         #endregion
 
-
-
-        /*
-                /// <summary>
-                /// 获取选择的通讯模式名称
-                /// </summary>
-                /// <param name="modePanel">通讯模式按钮的容器</param>
-                /// <returns>选择的模式名称，如果未选择则返回空字符串</returns>
-                public static string GetSelectedMode(FlowLayoutPanel modePanel)
-                {
-                    foreach (RadioButton rb in modePanel.Controls)
-                        if (rb.Checked)
-                            return rb.Name;
-                    return string.Empty; // 如果没有选择任何模式，返回空字符串
-                }
-        */
-
-
     }
     /// <summary>
     /// 频率区间模型 - 存储频段的上下限（单位：MHz）

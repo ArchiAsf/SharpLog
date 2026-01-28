@@ -1,4 +1,5 @@
 using System.Windows.Forms.VisualStyles;
+using static SharpLog.SaveDatahelper;
 
 namespace SharpLog
 {
@@ -74,7 +75,30 @@ namespace SharpLog
             if (LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(), ModeSelectBox, RSTBox, RRSTBox))
             {
                 //输入合法，保存日志
-
+                LogTable log = new LogTable()
+                {
+                    StartTime = $"{StartData.Value.ToString("yyyy-MM-dd")} {StartTime.Value.ToString("HH:mm:ss")}",
+                    EndTime = $"{EndData.Value.ToString("yyyy-MM-dd")} {EndTime.Value.ToString("HH:mm:ss")}",
+                    CallSign = CallSignInput.Text.Trim().ToUpper(),
+                    Frequency = FrequencyInput.Text.Trim(),
+                    Mode = GetSelectedMode(ModeSelectBox),
+                    /*                    RST = GetRSTString(RSTBox),
+                                        RRST = GetRSTString(RRSTBox),*/
+                    QTH = QTHInPut.Text.Trim(),
+                    RIG = RIGInPut.Text.Trim(),
+                    Pow = PowInPut.Text.Trim(),
+                    ANT = ANTInPut.Text.Trim(),
+                    Height = HeightInPut.Text.Trim(),
+                    OP = staUserdata.OPName,
+                    RMKS = RMKSInPut.Text.Trim(),
+                    IsQSL = IsQSL.Checked,
+                    IsQRP = IsQRP.Checked,
+                    IsSatellite = IsSatellite.Checked,
+                    IsRelayStation = IsRelayStation.Checked,
+                    IsEME = IsEME.Checked,
+                    IsMeteoricTrail = IsMeteoricTrail.Checked,
+                    IsConfirmation = false
+                };
 
 
 
