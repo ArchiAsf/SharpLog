@@ -79,8 +79,8 @@ namespace SharpLog
                 // 组装LogTable对象
                 LogTable log = new LogTable()
                 {
-                    StartTime = $"{StartData.Value.ToString("yyyy-MM-dd")} {StartTime.Value.ToString("HH:mm:ss")}",
-                    EndTime = $"{EndData.Value.ToString("yyyy-MM-dd")} {EndTime.Value.ToString("HH:mm:ss")}",
+                    StartTime = $"{StartData.Value.ToString("yyyy-MM-dd")} {StartTime.Value.ToString("HH:mm")}",
+                    EndTime = $"{EndData.Value.ToString("yyyy-MM-dd")} {EndTime.Value.ToString("HH:mm")}",
                     CallSign = CallSignInput.Text.Trim().ToUpper(),
                     Frequency = FrequencyInput.Text.Trim(),
                     Mode = GetSelectedMode(ModeSelectBox).Replace("Mode", ""),
