@@ -415,6 +415,5 @@ namespace SharpLog
             }
         }
 
-
     }
 }

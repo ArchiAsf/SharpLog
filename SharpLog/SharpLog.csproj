@@ -31,7 +31,6 @@
     <Content Include="DB\LogDatabase.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Icon\MainFormIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
