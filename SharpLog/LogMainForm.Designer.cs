@@ -540,7 +540,7 @@
             SaveLogBtn.TabIndex = 28;
             SaveLogBtn.Text = "添 加 记 录";
             SaveLogBtn.UseVisualStyleBackColor = true;
-            SaveLogBtn.Click += SaveLogBtn_Click;
+            SaveLogBtn.Click += this.SaveLogBtn_Click;
             // 
             // label9
             // 

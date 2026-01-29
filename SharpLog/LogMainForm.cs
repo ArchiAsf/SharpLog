@@ -7,7 +7,6 @@ namespace SharpLog
      *  国际业余无线电联盟（IARU）关于 QSO 记录的标准要求，涵盖日期（DATE）、时间（TIME）、频率（FREQ）、模式（MODE）、呼号（CALL）、信号报告（RST）等。
      * 《业余无线电台管理办法》（工信部令第 22 号）第三十条全文：业余无线电台的通信时间、通信频率、通信模式和通信对象等内容应当记入电台日志。电台日志应当保留两年，供无线电管理机构检查。
      *  所以——呼号、频率、模式、RST、RRST为必须填写项，其构成了日志的必填核心内容，其他信息均为可选填写项
-     *  
      */
     public partial class LogMainForm : Form
     {
@@ -52,6 +51,7 @@ namespace SharpLog
             //启动UTC时间显示定时器
             UtcTimer.Start();
             TimeShowLabel.Text = ShowTimeUpper();
+
             //更新开始与结束时间初始值
             SetStart_EndTimerInitialValue();
 
@@ -66,30 +66,31 @@ namespace SharpLog
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SaveLogBtn_Click(object sender, EventArgs e)
+        private async void SaveLogBtn_Click(object sender, EventArgs e)
         {
-            //判定输入合法性
-            //包括呼号合法性、频率合法性、模式选择、RST填写合法性、RRST填写合法性等
-            //全部合法则保存日志，否则弹出提示框提示用户修改错误信息
-            //呼号、频率、模式、RST、RRST为必须填写项，其构成了日志的必填核心内容，其他信息均为可选填写项
+            // 判定输入合法性
+            // 包括呼号合法性、频率合法性、模式选择、RST填写合法性、RRST填写合法性等
+            // 全部合法则保存日志，否则弹出提示框提示用户修改错误信息
+            // 呼号、频率、模式、RST、RRST为必须填写项，其构成了日志的必填核心内容，其他信息均为可选填写项
             if (LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(), ModeSelectBox, RSTBox, RRSTBox))
             {
-                //输入合法，保存日志
+                // 输入合法，保存日志
+                // 组装LogTable对象
                 LogTable log = new LogTable()
                 {
-                    StartTime = $"{StartData.Value.ToString("yyyy-MM-dd")} {StartTime.Value.ToString("HH:mm:ss")}",
-                    EndTime = $"{EndData.Value.ToString("yyyy-MM-dd")} {EndTime.Value.ToString("HH:mm:ss")}",
+                    StartTime = $"{StartData.Value.ToString("yyyy-MM-dd")} {StartTime.Value.ToString("HH:mm")}",
+                    EndTime = $"{EndData.Value.ToString("yyyy-MM-dd")} {EndTime.Value.ToString("HH:mm")}",
                     CallSign = CallSignInput.Text.Trim().ToUpper(),
                     Frequency = FrequencyInput.Text.Trim(),
-                    Mode = GetSelectedMode(ModeSelectBox),
-                    /*                    RST = GetRSTString(RSTBox),
-                                        RRST = GetRSTString(RRSTBox),*/
+                    Mode = GetSelectedMode(ModeSelectBox).Replace("Mode", ""),
+                    RST = GetRSTString(GetSelectedMode(ModeSelectBox).Replace("Mode", ""), RST_R, RST_S, RST_T),
+                    RRST = GetRSTString(GetSelectedMode(ModeSelectBox).Replace("Mode", ""), RRST_R, RRST_S, RRST_T),
                     QTH = QTHInPut.Text.Trim(),
                     RIG = RIGInPut.Text.Trim(),
                     Pow = PowInPut.Text.Trim(),
                     ANT = ANTInPut.Text.Trim(),
                     Height = HeightInPut.Text.Trim(),
-                    OP = staUserdata.OPName,
+                    OP = OPInPut.Text.Trim(),
                     RMKS = RMKSInPut.Text.Trim(),
                     IsQSL = IsQSL.Checked,
                     IsQRP = IsQRP.Checked,
@@ -100,16 +101,9 @@ namespace SharpLog
                     IsConfirmation = false
                 };
 
-
-
-
-
-
-
+                await DBHelper.AddDBData_Async<LogTable>(log);
 
             }
-
-
         }
 
 
@@ -420,7 +414,6 @@ namespace SharpLog
 
             }
         }
-
 
     }
 }
