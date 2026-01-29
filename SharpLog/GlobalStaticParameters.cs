@@ -1,16 +1,13 @@
 ﻿global using static SharpLog.GlobalStaticParameters;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SharpLog
 {
     /// <summary>
-    /// 全局静态参数变量类
-    /// </summary>+
-
+    /// 全局静态参数和配置类
+    /// 包含颜色配置、频率范围、通联模式等常量定义
+    /// </summary>
     public static class GlobalStaticParameters
     {
         //相对路径（程序运行目录）
