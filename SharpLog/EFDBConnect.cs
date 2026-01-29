@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using SharpLog.Infrastructure;
+using SharpLog.Infrastructure.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,12 +26,12 @@ namespace SharpLog
     }
 
     /// <summary>
-    /// 数据库操作类
+    /// 数据库操作类（包含日志记录和改进的异常处理）
     /// </summary>
     public static class DBHelper
     {
         /// <summary>
-        /// 向数据库中添加一条数据（异步）
+        /// 向数据库中添加一条数据（异步，包含日志记录）
         /// </summary>
         /// <typeparam name="T">数据对象类型</typeparam>
         /// <param name="data">数据</param>
@@ -41,37 +43,37 @@ namespace SharpLog
                 using EFDBConnect dbContext = new EFDBConnect();
                 dbContext.Set<T>().Add(data);
                 await dbContext.SaveChangesAsync();
+                Logger.Info($"成功添加{typeof(T).Name}类型的数据", "DBHelper");
             }
-            // 1. 精准捕获SQLite唯一约束冲突（你之前的高频错误）
+            // 精准捕获SQLite唯一约束冲突
             catch (SqliteException ex) when (ex.SqliteErrorCode == 19)
             {
+                Logger.Warn($"数据重复：尝试添加已存在的{typeof(T).Name}数据", "DBHelper");
                 MessageBox.Show("添加失败：数据已存在，请勿重复添加！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            // 2. 捕获其他SQLite底层错误（表不存在、连接失败、权限不足等）
+            // 捕获其他SQLite底层错误
             catch (SqliteException ex)
             {
+                Logger.Error($"SQLite数据库错误：{ex.Message}", ex, "DBHelper");
                 MessageBox.Show($"SQLite数据库错误：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // 3. 捕获EF Core数据更新异常（封装的其他数据库错误）
+            // 捕获EF Core数据更新异常
             catch (DbUpdateException ex)
             {
-                // 取内部真实异常信息（EF的Message往往不直观）
                 string msg = ex.InnerException?.Message ?? ex.Message;
+                Logger.Error($"数据更新失败：{msg}", ex, "DBHelper");
                 MessageBox.Show($"数据更新失败：{msg}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*// 4. 捕获实体模型验证失败（字段非空、长度超限等）
-            catch (ModelValidationException ex)
-            {
-                MessageBox.Show($"数据验证失败：{ex.Message}", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }*/
-            // 5. 捕获通用数据操作异常（空值、类型转换等）
+            // 捕获通用数据操作异常
             catch (NullReferenceException ex)
             {
+                Logger.Error($"操作错误：数据对象为空", ex, "DBHelper");
                 MessageBox.Show($"操作错误：数据对象为空，请检查输入！\r\n错误提示：{ex.Message}", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            // 6. 兜底捕获所有未指定的异常
+            // 兜底捕获所有未指定的异常
             catch (Exception ex)
             {
+                Logger.Error($"添加数据失败：{ex.Message}", ex, "DBHelper");
                 MessageBox.Show($"添加数据失败：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
