@@ -20,6 +20,11 @@ namespace SharpLog
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // SQLite数据库路径配置
+            if (!Directory.Exists(Path.Combine(RelativePath, "DB")))
+            {
+                //如果DB目录不存在，创建它
+                Directory.CreateDirectory(Path.Combine(RelativePath, "DB"));
+            }
             string dbPath = Path.Combine(RelativePath, "DB", "LogDatabase.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }

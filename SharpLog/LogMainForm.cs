@@ -18,7 +18,9 @@ namespace SharpLog
             InitializeComponent();
 
             //初始化数据库
-            DBHelper.Initialize();
+            bool iscreate = DBHelper.Initialize();
+            if(!iscreate) 
+                MessageBox.Show("数据库创建或连接错误", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             #region 设置窗体的一些基础样式以及属性
 

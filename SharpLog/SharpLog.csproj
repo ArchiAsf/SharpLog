@@ -23,16 +23,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DB\LogDatabase.db" />
     <None Remove="Icon\MainFormIcon.ico" />
     <None Remove="Resources\bangzhu.ico" />
     <None Remove="Resources\shezhi.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="DB\LogDatabase.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <!-- NuGet 包引用 -->
