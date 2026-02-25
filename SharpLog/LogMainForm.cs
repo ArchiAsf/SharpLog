@@ -17,6 +17,9 @@ namespace SharpLog
         {
             InitializeComponent();
 
+            //初始化数据库
+            DBHelper.Initialize();
+
             #region 设置窗体的一些基础样式以及属性
 
             FormStyles logMainFormStyles = new FormStyles();
