@@ -15,7 +15,7 @@ namespace SharpLog
         /// 对外调用汇总合法性校验
         /// </summary>
         /// <returns>如果合法返回true，否则返回false</returns>
-        public static bool IsValidity(string callSign, string frequency, FlowLayoutPanel modeSelectBox, FlowLayoutPanel RSTPanel, FlowLayoutPanel RRSTPanel)
+        public static bool IsValidity(string callSign, string frequency, FlowLayoutPanel modeSelectBox, FlowLayoutPanel RSTPanel, FlowLayoutPanel RRSTPanel, DateTime startTime, DateTime endTime)
         {
             string outErrorText = string.Empty;
 
@@ -24,7 +24,7 @@ namespace SharpLog
             bool isModeSelected = IsSelectMode(modeSelectBox, out string modeErrorText);
             bool isRSTValid = IsWriteRST(RSTPanel, out string RSTErrorText);
             bool isRRSTValid = IsWriteRST(RRSTPanel, out string RRSTErrorText);
-
+            bool isTimeValid = IsEndTimeAfterStartTime(startTime, endTime, out string TimeErrorText); 
             //判断呼号、频率和模式是否合法
             if (true && isCallSignValid && isModeValid && isModeSelected && isRSTValid && isRRSTValid)
                 /*都合法输出True*/
@@ -37,7 +37,7 @@ namespace SharpLog
                 if (modeErrorText != String.Empty) { outErrorText = $"{outErrorText}模式选择错误：{modeErrorText}\r\n"; }
                 if (RSTErrorText != String.Empty) { outErrorText = $"{outErrorText}对方信号报告输入错误：{RSTErrorText}\r\n"; }
                 if (RRSTErrorText != String.Empty) { outErrorText = $"{outErrorText}己方信号报告输入错误：{RRSTErrorText}\r\n"; }
-
+                if (TimeErrorText != String.Empty) { outErrorText = $"{outErrorText}时间输入错误：{TimeErrorText}\r\n"; }
 
                 //显示错误提示
                 MessageBox.Show(outErrorText, "输入错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,8 +193,41 @@ namespace SharpLog
             return true;
         }
 
-        #endregion
+        /// <summary>
+        /// 判断结束时间是否在开始时间之后和时间输入是否为空
+        /// </summary>
+        /// <param name="startTime">开始时间</param>
+        /// <param name="endTime">结束时间</param>
+        /// <param name="TimeErrorText">错误提示文本</param>
+        /// <returns>true：结束时间在开始时间之后；false：结束时间不在开始时间之后且开始时间和结束时间不为空</returns>
+        private static bool IsEndTimeAfterStartTime(DateTime startTime, DateTime endTime, out string TimeErrorText)
+        {
+            TimeErrorText = string.Empty;
+            if(endTime == null || startTime == null)
+            {
+                TimeErrorText = "时间输入不能为空";
+                return false;
 
+            }
+            else if (endTime < startTime)
+            {
+                TimeErrorText = "结束时间必须在开始时间之后";
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
+        /// <summary>
+        /// 连接日期和时间
+        /// </summary>
+        /// <param name="date">日期部分</param>
+        /// <param name="time">时间部分</param>
+        /// <returns>连接后的日期时间</returns>
+        public static DateTime ContDateAndTime(DateTime date, DateTime time)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+        }
     }
     /// <summary>
     /// 频率区间模型 - 存储频段的上下限（单位：MHz）
@@ -224,6 +257,8 @@ namespace SharpLog
             return $"{LowerLimit} - {UpperLimit} MHz";
         }
     }
+
+    
 }
 
 

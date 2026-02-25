@@ -77,7 +77,7 @@ namespace SharpLog
             // 包括呼号合法性、频率合法性、模式选择、RST填写合法性、RRST填写合法性等
             // 全部合法则保存日志，否则弹出提示框提示用户修改错误信息
             // 呼号、频率、模式、RST、RRST为必须填写项，其构成了日志的必填核心内容，其他信息均为可选填写项
-            if (LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(), ModeSelectBox, RSTBox, RRSTBox))
+            if (LogDataValidatorTools.IsValidity(CallSignInput.Text.Trim().ToUpper(), FrequencyInput.Text.Trim(), ModeSelectBox, RSTBox, RRSTBox,LogDataValidatorTools.ContDateAndTime(StartData.Value, StartTime.Value), LogDataValidatorTools.ContDateAndTime(EndData.Value, EndTime.Value)))
             {
                 // 输入合法，保存日志
                 // 组装LogTable对象
