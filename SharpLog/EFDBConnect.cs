@@ -20,6 +20,11 @@ namespace SharpLog
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // SQLite数据库路径配置
+            if (!Directory.Exists(Path.Combine(RelativePath, "DB")))
+            {
+                //如果DB目录不存在，创建它
+                Directory.CreateDirectory(Path.Combine(RelativePath, "DB"));
+            }
             string dbPath = Path.Combine(RelativePath, "DB", "LogDatabase.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
@@ -30,6 +35,28 @@ namespace SharpLog
     /// </summary>
     public static class DBHelper
     {
+        /// <summary>
+        /// 初始化数据库并连接，如果数据库文件或表不存在则创建
+        /// </summary>
+        /// <returns></returns>
+        public static bool Initialize()
+        {
+            try
+            {
+                using (var CT = new EFDBConnect())
+                {
+                    CT.Database.EnsureCreated();
+                    bool ISConnected = CT.Database.CanConnect();
+                    return ISConnected;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"数据库初始化失败：{ex.Message}", ex, "DBHelper");
+                return false;
+            }
+        }
+
         /// <summary>
         /// 向数据库中添加一条数据（异步，包含日志记录）
         /// </summary>
